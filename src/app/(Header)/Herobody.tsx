@@ -34,9 +34,9 @@ const Herobody = () => {
             </Button>
           </div>
         </div>
-        <div className="sm:w-1/2 md:h-[60vh] h-[30vh] flex items-center justify-center mb-10 md:mb-0 relative top-10">
+        <div className="sm:w-1/2 md:h-[80vh] h-[30vh] flex items-center justify-center mb-10 md:mb-0">
           <Image 
-          className="md:mt-20 image mb-6 md:mb-0"
+          className="md:mt-32 image mb-6 md:mb-0"
           width={250}
           height={250}
           src="/images/prof.png"
