@@ -7,15 +7,15 @@ import Contact from "./(Contact)/Contact";
 import AppNavbar from "@/components/app-navbar";
 import Experience from "./(Experience)/Experience";
 import Scroll from "../components/Scroller";
+import Semi from "@/components/Semi";
 
 export default function Home() {
   return (
     <>
-      {/* Scroll Progress Bar */}
       <Scroll />
-
       <div className="h-screen w-screen bg-black">
-        <div className="w-[60%] h-[50%] -inset-44 left-1/2 -translate-x-1/2 absolute bg-[#4bc5ce] box-shad brightness-150 z-0 rounded-b-full bg-opacity-20"></div>
+        {/* Hide the semi-circle on small devices (below sm) */}
+        <Semi/>
         <div className="sticky top-10 h-12 left-1/2 -translate-x-1/2 w-[50%] rounded-xl shadow-lg">
           <Navbar />
         </div>

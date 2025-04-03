@@ -16,7 +16,6 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 const Navbar = () => {
-  const { setTheme } = useTheme();
   return (
     <nav className="sm:flex hidden w-full h-full items-center rounded-2xl z-50 justify-between backdrop-blur-sm px-6 py-2 border border-white bg-black bg-opacity-70 ">
       <div className="flex items-center gap-4">
