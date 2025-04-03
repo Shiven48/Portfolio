@@ -18,134 +18,82 @@ import Image from "next/image";
 const Navbar = () => {
   const { setTheme } = useTheme();
   return (
-    <>
-      <nav className="sm:flex hidden w-full md:fixed pt-6 justify-between items-center z-10">
-        <div className="w-1/3 flex-col flex items-center ">
-          <div className=" flex space-x-2 items-center justify-center">
-            <DropdownMenu>
-              <Avatar className=" ">
-                <DropdownMenuTrigger>
-                  <AvatarImage src="https://github.com/DhrishP.png" alt="PFP" />
-                  <AvatarFallback>PFP</AvatarFallback>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem className="cursor-pointer ">
-                    <a
-                      className="flex items-center justify-center "
-                      target="_blank"
-                      href="https://github.com/DhrishP "
-                    >
-                      <Github className="mr-2 h-4 w-4" />
-                      <span>GitHub</span>
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="cursor-pointer ">
-                    <a
-                      className="flex items-center justify-center "
-                      target="_blank"
-                      href="https://twitter.com/whycurious101 "
-                    >
-                      <Twitter className="mr-2 h-4 w-4" />
-                      <span>Twitter</span>
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="cursor-pointer ">
-                    <a
-                      className="flex items-center justify-center "
-                      target="_blank"
-                      href="https://www.linkedin.com/in/dhrish-parekh-89a845262/ "
-                    >
-                      <LinkedinIcon className="mr-2 h-4 w-4" />
-                      <span>LinkedIn</span>
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="cursor-pointer ">
-                    <a
-                      className="flex items-center justify-center "
-                      target="_blank"
-                      href="https://dhrishp.tiiny.site"
-                    >
-                      <File className="mr-2 h-4 w-4" />
-                      <span>Resume</span>
-                    </a>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </Avatar>
-              <h3 className="">Dhrish Parekh</h3>
-            </DropdownMenu>
-          </div>
-          <div className="lg:pr-14 pr-16 animate-pulse flex flex-col items-center">
-            <div className="flex items-center  justify-center ">
-              <Image
-                src={"/images/arrow.png"}
-                className="rotate-180 origin-left  "
-                alt=""
-                width={30}
-                height={10}
+    <nav className="sm:flex hidden w-full h-full items-center rounded-2xl z-50 justify-between backdrop-blur-sm px-6 py-2 border border-white bg-black bg-opacity-70 ">
+      <div className="flex items-center gap-4">
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <Avatar>
+              <AvatarImage 
+                src="https://github.com/Shiven48.png" 
+                alt="PFP" 
+                width={3}
+                height={3}
               />
-              <Image
-                src={"/images/arrow.png"}
-                className="-rotate-180 transform  -scale-x-100
-      -translate-x-10  origin-center  "
-                alt=""
-                width={30}
-                height={10}
-              />
-            </div>
-            <h2 className="-translate-x-8  -translate-y-1 text-xs">Links</h2>
-          </div>
-        </div>
-        {/* <div className="absolute flex  items-center animate-pulse flex-col left-20 md:left-10 lg:left-[12.3rem] top-16">
-     
-    </div> */}
-        <ul className="w-1/2 flex cursor-pointer mr-2 md:mr-2  items-center space-x-6 justify-center  ">
-          <li className="hover:text-gray-600">
-            {" "}
-            <a href="#home">Home</a>{" "}
-          </li>
-          <li className="hover:text-gray-600">
-            {" "}
-            <a href="#about">About</a>{" "}
-          </li>
-          <li className="hover:text-gray-600">
-            {" "}
-            <a href="#skills">Skills</a>{" "}
-          </li>
-          <li className="hover:text-gray-600">
-            {" "}
-            <a href="#projects">Projects</a>{" "}
-          </li>
-          <li className="hover:text-gray-600">
-            {" "}
-            <a href="#contact">Contact</a>{" "}
-          </li>
-          <li>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                  <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                  <span className="sr-only">Toggle theme</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => setTheme("light")}>
-                  Light
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("dark")}>
-                  Dark
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("system")}>
-                  System
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </li>
-        </ul>
-      </nav>
-    </>
+              <AvatarFallback>PFP</AvatarFallback>
+            </Avatar>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="bg-black mt-2 border text-gray-400 border-l-white">
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="cursor-pointer">
+              <a
+                className="flex items-center justify-center hover:text-white"
+                target="_blank"
+                href="https://github.com/Shiven48"
+              >
+                <Github className="mr-2 h-4 w-4" />
+                <span>GitHub</span>
+              </a>
+            </DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
+              <a
+                className="flex items-center justify-center hover:text-white"
+                target="_blank"
+                href="https://x.com/Shiven1484625"
+              >
+                <Twitter className="mr-2 h-4 w-4" />
+                <span>Twitter</span>
+              </a>
+            </DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
+              <a
+                className="flex items-center justify-center hover:text-white"
+                target="_blank"
+                href="https://www.linkedin.com/in/sheven-royal-47bb71328/"
+              >
+                <LinkedinIcon className="mr-2 h-4 w-4" />
+                <span>LinkedIn</span>
+              </a>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+        <h3 className="text-white">Shiven Royal</h3>
+      </div>
+
+      {/* Center - Navigation Links */}
+      <ul className="flex items-center space-x-6">
+        <li className="hover:text-gray-400 text-white">
+          <a href="#home">Home</a>
+        </li>
+        <li className="hover:text-gray-400 text-white">
+          <a href="#about">About</a>
+        </li>
+        <li className="hover:text-gray-400 text-white">
+          <a href="#skills">Skills</a>
+        </li>
+        <li className="hover:text-gray-400 text-white">
+          <a href="#projects">Projects</a>
+        </li>
+        <li className="hover:text-gray-400 text-white">
+          <a href="#contact">Contact</a>
+        </li>
+      </ul>
+        <a 
+        href="#contact"
+        className="bg-gray-200 h-6 text-black hover:bg-[#4bc5ce] rounded-sm w-32 flex justify-center">
+          Let's Connect
+        </a>
+    </nav>
   );
 };
 

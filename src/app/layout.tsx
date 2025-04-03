@@ -8,8 +8,8 @@ const inter = Inter({ subsets: ['latin'] })
 const poppins = Poppins({subsets:['latin'],weight:['500']})
 
 export const metadata: Metadata = {
-  title: 'DhrishP Portfolio',
-  description: 'Portfolio of Dhrish Parekh, A full stack developer and a curious mind',
+  title: `Shiven Royal's Portfolio`,
+  description: 'Portfolio of Shiven Royal, A full stack developer and a mind ready to explore!',
 }
 
 export default function RootLayout({
@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en ">
-      <body className={`${poppins.className} bg-primary-foreground`}>
+      <body className={`${poppins.className} bg-black`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         {children}
         </ThemeProvider>

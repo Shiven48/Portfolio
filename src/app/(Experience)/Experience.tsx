@@ -1,43 +1,39 @@
 "use client";
 import React from "react";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import ReactMarkdown from "react-markdown";
+import { motion, useScroll, useSpring } from "framer-motion";
+import dynamic from "next/dynamic";
+
+// Dynamically import ReactMarkdown with SSR disabled
+const ReactMarkdown = dynamic(() => import("react-markdown"), { ssr: false });
 
 const experiences = [
   {
-    title: "Frontend Developer",
-    company: "CelebralZip Private Limited",
-    period: "Feb 2024 - July 2024",
-    description: `Worked on the core frontend of the website using React.js , material UI , typescript , react redux. \n\n -Learned lazy loading of components in react(lodash) \n\n -made websockets to show realtime progress ,speed and ETA for uploading large files. \n\n -file structure and refactoring of a large production ready app \n\n -debugging code using react dev tools \n\n -global state using redux and useContext \n\n
--form validation using formik , material UI styling of the app. `,
+    title: "Frontend Development",
+    type: "Personal Project",
+    period: "Feb 2025 - Present",
+    description: `-Worked on the core frontend of the website using React.js , material UI , typescript , \n\n -Learned lazy loading of components in react(lodash) \n\n  \n\n  -global state using zustand and useContext \n\n
+    \n\n-used zod for securing environment variables \n\n -Used UI libraries like ShadCN and modifiying them as needed. `,
     color: "bg-primary",
   },
   {
-    title: "Full Stack Developer",
-    company: "EpiphanyAI",
-    period: "May 2024 - Present",
-    description: `A founding engineer contributed heavily in making the backend of the product using various AI libaries. \n\n -Working with a seasonal silicon valley founder($400MM in acquisitions) - made the vercel ai sdk tooling functionality manually to use non supported llms like llama70b,qwen,etc for inference providers like groq,fireworks(reduced cost by 80%) \n\n
--shifted from tavily to searX for getting sources and media for the application(reduced cost by 90%+) \n\n
--added parallel generative UI streaming for media and sources section of app ( vercel ai sdk) \n\n
--generated sitemaps for 200k+ queries \n\n
--solved TTL devops errors , client side exceptions and frontend issues for emergency prod fixes \n\n
--created the underhood agent functionality of vercel ai sdk to support widgets \n\n
--made functionality widgets like weather , finance for the app(more to come) \n\n
--use of langchain for object generation in non support inference providers`,
+    title: "Full Stack Development",
+    type: "Personal Project",
+    period: "Feb 2025 - Present",
+    description: `Contributed heavily in making the backend of the application ,\n\n -Made reliable apis and parsed the content to get the necessary values.\n\n -Used a single Schema design to generalize all the medias \n\n -Support multiple social medias \n\n -Used ORM like drizzle to generate quesries faster and more reliable \n\n -Used langchain for creating embeddings of media for personalised recommendation and Searching\n\n`,
     color: "bg-primary",
   },
 ];
 
 const ExperienceCard = ({
   title,
-  company,
+  type,
   period,
   description,
   index,
   color,
 }: {
   title: string;
-  company: string;
+  type: string;
   period: string;
   description: string;
   index: number;
@@ -81,7 +77,7 @@ const ExperienceCard = ({
       whileInView="onscreen"
       viewport={{ once: true, amount: 0.8 }}
       whileHover={{ scale: 1.05, rotateY: 5, transition: { duration: 0.2 } }}
-      className={`${color} shadow-xl  rounded-lg p-6 mb-8 w-5/6 ${
+      className={`${color} shadow-xl rounded-lg p-6 mb-8 w-5/6 ${
         index % 2 === 0 ? "ml-auto" : "mr-auto"
       } relative z-10 cursor-pointer overflow-hidden`}
     >
@@ -100,7 +96,7 @@ const ExperienceCard = ({
           variants={contentVariants}
           className="text-xl font-semibold text-gray-700 mb-1"
         >
-          {company}
+          {type}
         </motion.h4>
         <motion.p
           variants={contentVariants}
@@ -108,9 +104,9 @@ const ExperienceCard = ({
         >
           {period}
         </motion.p>
-        <motion.p variants={contentVariants} className="text-gray-700">
+        <motion.div variants={contentVariants} className="text-gray-700">
           <ReactMarkdown>{description}</ReactMarkdown>
-        </motion.p>
+        </motion.div>
       </motion.div>
     </motion.div>
   );
@@ -159,17 +155,15 @@ const AnimatedExperiencePortfolio = () => {
           initial={{ y: 0, opacity: 0 }}
           transition={{ type: "tween", duration: 3 }}
           viewport={{ once: true }}
-          className="text-xl text-center "
+          className="text-xl text-center"
         >
           My Career Journey
         </motion.div>
         <div className="text-center space-y-1 pb-6">
-          <h1 className="text-center text-4xl md:text-5xl sm:text-5xl font-semibold capitalize  md:mt-0 ">
+          <h1 className="text-center text-4xl md:text-5xl sm:text-5xl font-semibold capitalize md:mt-0">
             Staying with the problems long enough
           </h1>
-          <p className="text-gray-500">
-            not intelligent , just persistent
-          </p>
+          <p className="text-gray-500">not intelligent, just persistent</p>
         </div>
 
         <div className="relative">

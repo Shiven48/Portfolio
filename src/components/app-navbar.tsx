@@ -33,7 +33,7 @@ const AppNavbar = () => {
                   <AvatarImage
                     height={50}
                     width={50}
-                    src="https://github.com/DhrishP.png  "
+                    src="https://github.com/Shiven48.png"
                     alt="@shadcn"
                   />
                   <AvatarFallback>PFP</AvatarFallback>
@@ -41,21 +41,21 @@ const AppNavbar = () => {
                 <PopoverContent className="w-[35vw]">
                   <ul>
                     <Link
-                      href="https://github.com/DhrishP"
+                      href="https://github.com/Shiven48"
                       className="flex items-center hover:bg-primary-foreground space-x-2 border-muted border rounded px-1 mb-2 cursor-pointer py-2   "
                     >
                       <GithubIcon className="h-4 w-4" />
                       <h3>Github</h3>
                     </Link>
                     <Link
-                      href="https://twitter.com/whycurious101"
+                      href="https://x.com/Shiven1484625"
                       className="flex items-center hover:bg-primary-foreground space-x-2 border-muted border rounded px-1 mb-2 cursor-pointer py-2   "
                     >
                       <TwitterIcon className="h-4 w-4" />
                       <h3>Twitter</h3>
                     </Link>
                     <Link
-                      href=""
+                      href="https://www.linkedin.com/in/sheven-royal-47bb71328/"
                       className="flex items-center hover:bg-primary-foreground space-x-2 border-muted border rounded px-1 mb-2 cursor-pointer py-2   "
                     >
                       <LinkedinIcon className="h-4 w-4" />

@@ -25,7 +25,7 @@ const Contact = () => {
       >
         Contact
       </motion.div>
-      <div className="text-center space-y-1 mb-8 md:mb-12 px-4">
+      <div className="text-center space-y-1 mb-8 md:mb-12 px-4 mt-10">
         <h1 className="text-center text-3xl md:text-5xl lg:text-6xl font-semibold capitalize md:mt-0">
           Let&apos;s Build Something Amazing Together
         </h1>
@@ -34,13 +34,13 @@ const Contact = () => {
         </p>
       </div>
 
-      <div className="container mx-auto px-4 max-w-5xl overflow-y-scroll md:overflow-y-hidden">
+      <div className="container mx-auto px-4 max-w-5xl overflow-y-scroll md:overflow-y-hidden mt-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-background/30 backdrop-blur-sm rounded-xl shadow-xl border border-muted/40 p-4 md:p-8 mb-28 md:mb-16"
+          className="bg-background/60 backdrop-blur-sm rounded-xl shadow-xl border border-gray-400 p-4 md:p-8 mb-28 md:mb-16"
         >
           <div className="grid md:grid-cols-2 gap-8 md:gap-10">
             <div className="space-y-6 md:space-y-8">
@@ -72,24 +72,6 @@ const Contact = () => {
                   </div>
                 </motion.a>
 
-                <motion.a
-                  href="https://cal.com/whycurious101"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 group cursor-pointer"
-                  whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <div className="p-3 rounded-full bg-primary/10 text-primary">
-                    <Calendar className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium">Schedule a Meeting</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Let's find a time to chat
-                    </p>
-                  </div>
-                </motion.a>
               </div>
 
               <div className="pt-2 md:pt-4">
@@ -104,7 +86,7 @@ const Contact = () => {
                     className="rounded-full hover:bg-primary hover:text-white transition-colors"
                   >
                     <a
-                      href="https://github.com/dhrishp"
+                      href="https://github.com/Shiven48/"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="GitHub"
@@ -119,7 +101,7 @@ const Contact = () => {
                     className="rounded-full hover:bg-primary hover:text-white transition-colors"
                   >
                     <a
-                      href="https://twitter.com/whycurious101"
+                      href="https://x.com/Shiven1484625"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Twitter"
@@ -134,7 +116,7 @@ const Contact = () => {
                     className="rounded-full hover:bg-primary hover:text-white transition-colors"
                   >
                     <a
-                      href="https://linkedin.com/in/dhrish-parekh-89a845262/"
+                      href="https://www.linkedin.com/in/sheven-royal-47bb71328/"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="LinkedIn"
@@ -149,7 +131,7 @@ const Contact = () => {
                     className="rounded-full hover:bg-primary hover:text-white transition-colors"
                   >
                     <a
-                      href="https://dhrishp.tiiny.site"
+                      href="https://beige-roxana-62.tiiny.site"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Resume"
@@ -184,7 +166,7 @@ const Contact = () => {
 
               <form
                 id="contact-form"
-                action="https://formsubmit.co/cc9e32fafc72f282ca8d7e86196eeefb"
+                action="https://formsubmit.co/shevenroyal@gmail.com"
                 method="POST"
                 className="space-y-5 md:space-y-6"
               >

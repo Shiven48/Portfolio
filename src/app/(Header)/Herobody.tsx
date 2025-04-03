@@ -13,35 +13,35 @@ const Herobody = () => {
       >
         <div className="sm:w-1/2 flex flex-col items-center justify-center space-y-1">
           <h3 className="md:text-5xl mt-10 sm:text-4xl text-3xl font-semibold">
-            Dhrish Parekh👋
+            Shiven Royal👋
           </h3>
           <div className="flex items-center justify-center space-x-1 mb-10 md:mb-0 sm:mb-5 ">
             <h5 className="w-24 font-extralight h-0.5 bg-gray-400 "></h5>
             <h4 className="md:text-lg">Fullstack Developer</h4>
           </div>
           <div className="space-y-7">
-            <p className="text-gray-500 dark:text-gray-300 font-light ">
-              Turning vision into reality with coding{" "}
+            <p className="text-white dark:text-gray-400 font-light ">
+              Learning to solve problems and be helpful to others with coding{" "}
               <br className="md:hidden" /> and designing using{" "}
               <br className="hidden md:block" /> awesome technologies.I also
-              write to <br /> document my life journey.
+              love to explore <br /> be it life,places or coding.
             </p>
-            <Button className="hover:bg-secondary hover:border-primary hover:text-primary border duration-150 transition ease-out">
+            <Button className="hover:bg-secondary hover:border-black hover:bg-gray-400 hover:text-black border borfer duration-150 transition ease-out">
               <a href="#contact" className="flex items-center">
-                <h3>Say hello</h3>
+                <h3 >Wanna Contact?</h3>
                 <LeafyGreen className="ml-2 h-6 w-4" />
               </a>
             </Button>
           </div>
         </div>
-        <div className="sm:w-1/2 md:h-[60vh] h-[30vh]  flex items-center justify-center mb-10 md:mb-0">
-          <Image
-            src={"/images/profile.jpg"}
-            className="md:mt-20 image mb-6 md:mb-0"
-            alt="PFP"
-            width={300}
-            height={300}
-          />
+        <div className="sm:w-1/2 md:h-[60vh] h-[30vh] flex items-center justify-center mb-10 md:mb-0">
+          <Image 
+          className="md:mt-20 image mb-6 md:mb-0"
+          width={250}
+          height={250}
+          src="/images/prof.png"
+          alt="PFP"
+        />
         </div>
       </div>
       <motion.div

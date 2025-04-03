@@ -10,14 +10,12 @@ type CardProps = {
   image: string;
   color:string,
   githubURL: string;
-  websiteURL: string;
 };
 export default function Card({
   title,
   description,
   githubURL,
   image,
-  websiteURL,
   color
 }: CardProps) {
   const cardVariants = {
@@ -55,7 +53,7 @@ export default function Card({
                 <Image
                   height={700}
                   width={500}
-                  src={image}
+                  src={image || ''}
                   className="object-center object-cover "
                   alt={"Project Image"}
                 />
@@ -73,13 +71,6 @@ export default function Card({
                   className="bg-gray-300 p-2 text-slate-700 rounded-full cursor-pointer"
                 >
                   <Github className="cursor-pointer" />
-                </Link>
-                <Link
-                  target="_blank"
-                  href={websiteURL}
-                  className="bg-gray-300 p-2 text-slate-700 rounded-full cursor-pointer"
-                >
-                  <Globe />
                 </Link>
               </div>
             </div>

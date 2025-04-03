@@ -66,6 +66,12 @@
  
     --ring: 217.2 32.6% 17.5%;
   }
+
+  @layer components {
+    .box-shad {
+      @apply backdrop-blur-sm blur-3xl;
+    }
+  }
 }
 
 *{

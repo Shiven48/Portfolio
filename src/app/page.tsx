@@ -6,12 +6,19 @@ import Project from "./(Projects)/Project";
 import Contact from "./(Contact)/Contact";
 import AppNavbar from "@/components/app-navbar";
 import Experience from "./(Experience)/Experience";
+import Scroll from "../components/Scroller";
 
 export default function Home() {
   return (
     <>
-      <div className="h-screen w-screen bg-primary-foreground">
-        <Navbar />
+      {/* Scroll Progress Bar */}
+      <Scroll />
+
+      <div className="h-screen w-screen bg-black">
+        <div className="w-[60%] h-[50%] -inset-44 left-1/2 -translate-x-1/2 absolute bg-[#4bc5ce] box-shad brightness-150 z-0 rounded-b-full bg-opacity-20"></div>
+        <div className="sticky top-10 h-12 left-1/2 -translate-x-1/2 w-[50%] rounded-xl shadow-lg">
+          <Navbar />
+        </div>
         <Herobody />
         <AppNavbar />
       </div>
@@ -27,7 +34,7 @@ export default function Home() {
       <div className="h-full w-screen">
         <Project />
       </div>
-      <div className="h-[80vh] md:h-full translate-y-24 w-screen">
+      <div className="h-[80vh] md:h-full w-screen">
         <Contact />
       </div>
     </>

@@ -13,12 +13,12 @@ const Project = () => {
         initial={{ y: 0, opacity: 0 }}
         transition={{ type: "tween", duration: 3 }}
         viewport={{ once: true }}
-        className="text-xl text-center "
+        className="text-xl text-center text-gray-400"
       >
         Projects
       </motion.div>
       <div className="text-center space-y-1">
-        <h1 className="text-center text-5xl md:text-6xl sm:text-6xl font-semibold capitalize  md:mt-0 ">
+        <h1 className="text-center text-5xl md:text-6xl sm:text-6xl font-semibold capitalize  md:mt-0 text-gray-400">
         Problems and Paradigms
         </h1>
         <p className="text-gray-500">Weaving the web, one solution at a time</p>
@@ -32,7 +32,6 @@ const Project = () => {
             color={proj.color}
             image={proj.ImageUrl}
             githubURL={proj.github}
-            websiteURL={proj.websiteUrl}
           />
         ))}
       </div>
