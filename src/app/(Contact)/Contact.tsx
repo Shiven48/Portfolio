@@ -56,7 +56,7 @@ const Contact = () => {
 
               <div className="space-y-4 md:space-y-6">
                 <motion.a
-                  href="mailto:parekhdhrish.pg@gmail.com"
+                  href="mailto:shevenroyal@gmail.com"
                   className="flex items-center gap-4 group cursor-pointer"
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}

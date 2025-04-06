@@ -83,6 +83,26 @@
   order:1;
   background-size:cover;
 }
+.text-stroke-blue {
+  -webkit-text-stroke: 1px #3b82f6;
+}
+
+@media (max-width: 640px) {
+  .small-text {
+    @apply left-10 absolute top-4
+  }
+
+  .small-text-props {
+    font-size: 1.5rem;
+    font-size: large;
+    position: absolute;
+  }
+
+  .small-skills-layout {
+    position: flex;
+    @apply top-8 right-10
+  }
+}
 
 @keyframes profile_animate{
   0%{
