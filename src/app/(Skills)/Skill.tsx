@@ -28,7 +28,7 @@ const SimpleSkillAnimation = () => {
       {skills.map((skill, index) => {
         const angle = (index / skills.length) * Math.PI * 2;
         // Reduce radius for small screens
-        const radius = typeof window !== 'undefined' && window.innerWidth < 640 ? 175 : 200;
+        const radius = typeof window !== 'undefined' && window.innerWidth < 640 ? 150 : 200;
         const x = Math.cos(angle) * radius;
         const y = Math.sin(angle) * radius;
 
