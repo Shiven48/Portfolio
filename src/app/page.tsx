@@ -1,42 +1,30 @@
 import Navbar from "./(Header)/Navbar";
 import Herobody from "./(Header)/Herobody";
-import About from "./(About)/About";
-import Skill from "./(Skills)/Skill";
-import Project from "./(Projects)/Project";
-import Contact from "./(Contact)/Contact";
-import AppNavbar from "@/components/app-navbar";
-import Experience from "./(Experience)/Experience";
-import Scroll from "../components/Scroller";
-import Semi from "@/components/Semi";
+import { TrajectoryCoverflow } from "@/components/TrajectoryCoverflow";
+import { BlogsSection } from "@/components/BlogsSection";
+import { StatsBanner } from "@/components/StatsBanner";
+import { ContactSection } from "@/components/ContactSection";
 
 export default function Home() {
   return (
-    <>
-      <Scroll />
-      <div className="h-screen w-screen bg-black">
-        {/* Hide the semi-circle on small devices (below sm) */}
-        <Semi/>
-        <div className="sticky top-0 z-50 w-[98%] mx-auto shadow-lg">
-          <Navbar />
-        </div>
-        <Herobody />
-        <AppNavbar />
-      </div>
-      <div className="h-full md:h-[85vh] w-screen">
-        <About />
-      </div>
-      <div className="h-full w-screen">
-        <Skill />
-      </div>
-      <div className="h-full w-screen">
-        <Experience />
-      </div>
-      <div className="h-full w-screen">
-        <Project />
-      </div>
-      <div className="h-[80vh] md:h-full w-screen">
-        <Contact />
-      </div>
-    </>
+    <main className="min-h-screen flex flex-col justify-between selection:bg-[var(--color-accent)] selection:text-white">
+      {/* Top Navbar */}
+      <Navbar />
+
+      {/* Hero Section (Left Text + Right 3.5s Rotating Terminal Card) */}
+      <Herobody />
+
+      {/* Trajectory Coverflow Carousel (Task 4: Middle Pop-out Card with 5s Timer) */}
+      <TrajectoryCoverflow />
+
+      {/* Selected Writings / Blogs (Task 5: In place of selected work) */}
+      <BlogsSection />
+
+      {/* Stats & Highlights Bar */}
+      <StatsBanner />
+
+      {/* Get in Touch & Minimalist Footer */}
+      <ContactSection />
+    </main>
   );
 }
