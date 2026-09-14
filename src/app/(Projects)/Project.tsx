@@ -24,7 +24,7 @@ const Project = () => {
         <p className="text-gray-500">Weaving the web, one solution at a time</p>
       </div>
       <div>
-        {ProjectData.map((proj) => (
+        {ProjectData.projects.map((proj) => (
           <Card
             key={proj.id}
             description={proj.description}

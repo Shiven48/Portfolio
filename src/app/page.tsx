@@ -16,7 +16,7 @@ export default function Home() {
       <div className="h-screen w-screen bg-black">
         {/* Hide the semi-circle on small devices (below sm) */}
         <Semi/>
-        <div className="sticky top-10 h-12 left-1/2 -translate-x-1/2 w-[50%] rounded-xl shadow-lg">
+        <div className="sticky top-0 z-50 w-[98%] mx-auto shadow-lg">
           <Navbar />
         </div>
         <Herobody />

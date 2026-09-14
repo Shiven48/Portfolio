@@ -9,15 +9,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Github, Twitter, LinkedinIcon, File } from "lucide-react";
-import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import { Github, Twitter, LinkedinIcon} from "lucide-react";
+import projectData from "@/../data/data.json";
 
 const Navbar = () => {
   return (
-    <nav className="sm:flex hidden w-full h-full items-center rounded-2xl z-50 justify-between backdrop-blur-sm px-6 py-2 border border-white bg-black bg-opacity-70 ">
+    <nav className="sm:flex hidden items-center rounded-2xl z-50 justify-between backdrop-blur-sm mt-4 px-6 py-2 border border-white bg-black bg-opacity-70 ">
       <div className="flex items-center gap-4">
         <DropdownMenu>
           <DropdownMenuTrigger>
@@ -71,27 +68,12 @@ const Navbar = () => {
 
       {/* Center - Navigation Links */}
       <ul className="flex items-center space-x-6">
-        <li className="hover:text-gray-400 text-white">
-          <a href="#home">Home</a>
-        </li>
-        <li className="hover:text-gray-400 text-white">
-          <a href="#about">About</a>
-        </li>
-        <li className="hover:text-gray-400 text-white">
-          <a href="#skills">Skills</a>
-        </li>
-        <li className="hover:text-gray-400 text-white">
-          <a href="#projects">Projects</a>
-        </li>
-        <li className="hover:text-gray-400 text-white">
-          <a href="#contact">Contact</a>
-        </li>
+        {projectData.navSections.map((link) => (
+          <li key={link} className="hover:text-gray-400 text-white">
+            <a href={`#${link.toLowerCase()}`}>{link}</a>
+          </li>
+        ))}
       </ul>
-        <a 
-        href="#contact"
-        className="bg-gray-200 h-6 text-black hover:bg-[#4bc5ce] rounded-sm w-32 flex justify-center">
-          Let's Connect
-        </a>
     </nav>
   );
 };

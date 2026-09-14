@@ -1,18 +1,96 @@
-[
-  {
-    "id": 1,
-    "title": "LinnkedOut",
-    "description": "It is a personalized social media application that help you to stay productive(please read the README on github first)",
-    "github": "https://github.com/Shiven48/LinnkedOut",
-    "ImageUrl": "/images/linnkedOut.jpg",
-    "color": "black"
+{
+  "name": "Shiven",
+  "surname": "Royal",
+  "email": "Shevenroyal@gmail.com",
+  "email_placeholder": "Shevenroyal",
+  "socials": [
+    {
+      "platform": "github", 
+      "url": "https://github.com/Shiven48",
+      "description": "Source code and Open Source Projects"
+    },
+    {
+      "platform": "LinkedIn", 
+      "url": "https://www.linkedin.com/in/sheven-royal-47bb71328/",
+      "description": "Source code and Open Source Projects"
+    }
+  ],
+  "skills" :{
+    "Programming": [ "Python", "C++", "CUDA", "Bash", "GStreamer", "TypeScript", "Machine Learning" ],
+    "cloud": ["Docker", "github actions"],
+    "web": ["React", "Next.js", "Node.js", "FastAPI", "TailwindCSS"],
+    "persistence": ["PostgreSQL", "MySQL", "SQLite"]
   },
-  {
-    "id": 2,
-    "title": "Chat Application",
-    "description": "A cli application that helps you to connect with your group under the hood it uses Sockets and Threads",
-    "github": "https://github.com/Shiven48/MultiThreaded-Chat-Application",
-    "ImageUrl": "/images/chat.png",
-    "color": "black"
-  }
-]
+  "Academic": {
+    "course": "B.E in Information Technology",
+    "duration": "2022 - 2026",
+    "cgpa": 7.8,
+    "college_name": "Vidyavardhini's College of Engineering and Technology",
+    "location": "Mumbai, India" 
+  },
+  "projectMeta": {
+    "ExperienceSection": [1, 2, 3],
+    "PersonalSection": [4, 5]
+  },
+  "projects":[
+      {
+        "id": 1,
+        "title": "SilentGuard",
+        "role": "",
+        "description": [
+          ""
+        ],
+        "problemStatement": "",
+        "isAccessibleByUrl": true,
+        "url": "https://silentguard.ai"
+      },
+      {
+        "id": 2,
+        "title": "Labridge",
+        "role": "LIS Developer Intern",
+        "description": [
+          ""
+        ],
+        "problemStatement": "",
+        "isAccessibleByUrl": false,
+        "url": ""
+      },
+      {
+        "id": 3,
+        "title": "Livprint",
+        "role": "",
+        "description": [
+          ""
+        ],
+        "problemStatement": "",
+        "isAccessibleByUrl": false,
+        "url": ""
+      },
+      {
+        "id": 4,
+        "title": "Astmio",
+        "role": "",
+        "description": [
+          ""
+        ],
+        "problemStatement": "",
+        "isAccessibleByUrl": true,
+        "url": "https://github.com/Shiven48/Astmio"
+      },
+      {
+        "id": 5,
+        "title": "LinnkedOut",
+        "role": "",
+        "description": [
+          ""
+        ],
+        "problemStatement": "",
+        "isAccessibleByUrl": true,
+        "url": ""
+      }
+  ],
+  "blogs": [
+    ""
+  ],
+  "navSections": ["Home", "About", "Skills", "Projects", "Contact"]
+}
