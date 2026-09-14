@@ -6,17 +6,17 @@ import Image from "next/image";
 import Link from "next/link";
 type CardProps = {
   title: string;
-  description: string;
-  image: string;
-  color:string,
-  githubURL: string;
+  description: string | string[];
+  image?: string;
+  color?: string;
+  githubURL?: string;
 };
 export default function Card({
   title,
   description,
-  githubURL,
-  image,
-  color
+  githubURL = "",
+  image = "",
+  color = "var(--color-primary)",
 }: CardProps) {
   const cardVariants = {
     offscreen: {
@@ -62,7 +62,7 @@ export default function Card({
             <div className=" md:col-span-2 px-2 md:px-0 md:h-full w-full">
               <h2 style={{color:color}}  className={cn("md:text-2xl capitalize text-lg ")}>{title}</h2>
               <p className="text-gray-400 text-xs md:text-[1rem] mt-2 mb-4 ">
-                {description}
+                {Array.isArray(description) ? description.join(" ") : description}
               </p>
               <div className="flex items-center space-x-4 mt-2">
                 <Link

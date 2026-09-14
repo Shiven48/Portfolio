@@ -24,14 +24,14 @@ const Project = () => {
         <p className="text-gray-500">Weaving the web, one solution at a time</p>
       </div>
       <div>
-        {ProjectData.projects.map((proj) => (
+        {ProjectData.projects.map((proj: any) => (
           <Card
             key={proj.id}
             description={proj.description}
             title={proj.title}
             color={proj.color}
             image={proj.ImageUrl}
-            githubURL={proj.github}
+            githubURL={proj.url || proj.github}
           />
         ))}
       </div>
