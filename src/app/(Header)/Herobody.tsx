@@ -1,63 +1,81 @@
 "use client";
+
 import React from "react";
-import { Button } from "@/components/ui/button";
-import { LeafyGreen, MoveDown } from "lucide-react";
+import { ArrowRight, Mail, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { HeroRotatingCard } from "@/components/HeroRotatingCard";
+
 const Herobody = () => {
   return (
-    <>
-      <div
-        id="home"
-        className="w-full mt-10 md:mt-0 md:h-[80vh] sm:h-[60vh] flex flex-col-reverse sm:flex-row space-y-10 md:space-y-0 "
-      >
-        <div className="sm:w-1/2 flex flex-col items-center justify-center space-y-1">
-          <h3 className="md:text-5xl mt-10 sm:text-4xl text-3xl font-semibold">
-            Shiven Royal👋
-          </h3>
-          <div className="flex items-center justify-center space-x-1 mb-10 md:mb-0 sm:mb-5 ">
-            <h5 className="w-24 font-extralight h-0.5 bg-gray-400 "></h5>
-            <h4 className="md:text-lg">Fullstack Developer</h4>
-          </div>
-          <div className="space-y-7">
-            <p className="text-white dark:text-gray-400 font-light ">
-              Learning to solve problems and be helpful to others with coding{" "}
-              <br className="md:hidden" /> and designing using{" "}
-              <br className="hidden md:block" /> awesome technologies.I also
-              love to explore <br /> be it life,places or coding.
+    <section id="home" className="w-full pt-10 pb-16 md:pt-16 md:pb-24">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          {/* Left Column: Hero Text & CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="lg:col-span-7 flex flex-col justify-center space-y-6 text-left"
+          >
+            {/* Top Subtitle Badge */}
+            <div className="inline-flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
+              <span className="text-xs font-mono-code font-semibold tracking-wider text-[var(--color-accent)] uppercase">
+                ML Systems Engineer · Fullstack & CUDA · Mumbai
+              </span>
+            </div>
+
+            {/* Main Headline with Accent Underline */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-[var(--color-primary)] leading-[1.15]">
+              It started with building{" "}
+              <span className="relative inline-block whitespace-nowrap">
+                <span className="relative z-10 text-[var(--color-primary)]">
+                  scalable systems
+                </span>
+                <span className="absolute bottom-1 left-0 w-full h-[6px] bg-[var(--color-accent)]/35 -z-0 rounded-full" />
+              </span>{" "}
+              and algorithms that learn.
+            </h1>
+
+            {/* Description / Bio Text */}
+            <p className="text-base sm:text-lg text-[var(--color-secondary)] font-normal max-w-xl leading-relaxed">
+              Fullstack developer and systems thinker obsessed with deep learning pipelines,
+              real-time processing, and clean web platforms. Hooked on building resilient software
+              from kernel space to the browser.
             </p>
-            <Button className="hover:bg-secondary hover:border-black hover:bg-gray-400 hover:text-black border borfer duration-150 transition ease-out">
-              <a href="#contact" className="flex items-center">
-                <h3 >Wanna Contact?</h3>
-                <LeafyGreen className="ml-2 h-6 w-4" />
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <a
+                href="#trajectory"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold btn-cta shadow-md hover:shadow-lg transition-all"
+              >
+                <span>View the work</span>
+                <ArrowRight className="w-4 h-4" />
               </a>
-            </Button>
-          </div>
-        </div>
-        <div className="sm:w-1/2 md:h-[80vh] h-[30vh] flex items-center justify-center mb-10 md:mb-0">
-          <Image 
-          className="md:mt-32 image mb-6 md:mb-0"
-          width={250}
-          height={250}
-          src="/images/prof.png"
-          alt="PFP"
-        />
+
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold btn-outline-custom shadow-sm transition-all"
+              >
+                <Mail className="w-4 h-4 text-[var(--color-secondary)]" />
+                <span>Get in touch</span>
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Right Column: Visual Rotating Card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            className="lg:col-span-5 flex items-center justify-center"
+          >
+            <HeroRotatingCard />
+          </motion.div>
         </div>
       </div>
-      <motion.div
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ type: "tween", duration: 1 }}
-        initial={{ y: 200, opacity: 0.2 }}
-        className="flex items-center mt-20 md:mt-0  sm:mt-4   justify-center  space-x-2 "
-      >
-        <div className="flex justify-center md:h-16 border-4 h-14  border-primary md:w-8 w-8 rounded-full">
-          <div className="w-0.5 h-3 mt-2 animate-bounce md:border-4 border-2 border-primary"></div>
-        </div>
-        <div className="flex items-center">
-          Scroll down <MoveDown className="mr-2 h-4 w-4 animate-pulse" />
-        </div>
-      </motion.div>
-    </>
+    </section>
   );
 };
 

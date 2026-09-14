@@ -1,80 +1,115 @@
 "use client";
-import React from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Github, Twitter, LinkedinIcon} from "lucide-react";
+
+import React, { useState } from "react";
 import projectData from "@/../data/data.json";
+import { Github, Linkedin, Mail, Menu, X, ArrowUpRight } from "lucide-react";
 
 const Navbar = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const getSectionHref = (section: string) => {
+    const slug = section.toLowerCase().trim();
+    if (slug === "home") return "#home";
+    if (slug === "about") return "#about";
+    if (slug === "skills") return "#skills";
+    if (slug === "projects") return "#trajectory";
+    if (slug === "contact") return "#contact";
+    if (slug === "blog" || slug === "blogs") return "#blogs";
+    return `#${slug}`;
+  };
+
   return (
-    <nav className="sm:flex hidden items-center rounded-2xl z-50 justify-between backdrop-blur-sm mt-4 px-6 py-2 border border-white bg-black bg-opacity-70 ">
-      <div className="flex items-center gap-4">
-        <DropdownMenu>
-          <DropdownMenuTrigger>
-            <Avatar>
-              <AvatarImage 
-                src="https://github.com/Shiven48.png" 
-                alt="PFP" 
-                width={3}
-                height={3}
-              />
-              <AvatarFallback>PFP</AvatarFallback>
-            </Avatar>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="bg-black mt-2 border text-gray-400 border-l-white">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem className="cursor-pointer">
-              <a
-                className="flex items-center justify-center hover:text-white"
-                target="_blank"
-                href="https://github.com/Shiven48"
-              >
-                <Github className="mr-2 h-4 w-4" />
-                <span>GitHub</span>
-              </a>
-            </DropdownMenuItem>
-            <DropdownMenuItem className="cursor-pointer">
-              <a
-                className="flex items-center justify-center hover:text-white"
-                target="_blank"
-                href="https://x.com/Shiven1484625"
-              >
-                <Twitter className="mr-2 h-4 w-4" />
-                <span>Twitter</span>
-              </a>
-            </DropdownMenuItem>
-            <DropdownMenuItem className="cursor-pointer">
-              <a
-                className="flex items-center justify-center hover:text-white"
-                target="_blank"
-                href="https://www.linkedin.com/in/sheven-royal-47bb71328/"
-              >
-                <LinkedinIcon className="mr-2 h-4 w-4" />
-                <span>LinkedIn</span>
-              </a>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <h3 className="text-white">Shiven Royal</h3>
+    <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-[var(--color-surface)]/85 border-b border-[var(--color-border)] transition-colors duration-200">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        {/* Left: Identity / Monogram */}
+        <a
+          href="#home"
+          className="flex items-center gap-3 group focus:outline-none"
+        >
+          <div className="w-8 h-8 rounded-md bg-[var(--color-cta)] text-[var(--color-cta-text)] flex items-center justify-center font-mono-code font-bold text-xs tracking-wider group-hover:scale-105 transition-transform">
+            SR
+          </div>
+          <div className="flex flex-col">
+            <div className="flex items-center gap-2">
+              <span className="font-semibold text-sm tracking-tight text-[var(--color-primary)]">
+                {projectData.name} {projectData.surname}
+              </span>
+              <span className="text-xs text-[var(--color-secondary)] font-mono-code hidden sm:inline">
+                {projectData.email}
+              </span>
+            </div>
+            <span className="text-[11px] text-[var(--color-secondary)] font-mono-code leading-none">
+              Fullstack & ML Engineer · Mumbai, IN
+            </span>
+          </div>
+        </a>
+
+        {/* Right: Desktop Navigation Links from data.json navSections */}
+        <nav className="hidden md:flex items-center gap-6">
+          {projectData.navSections.map((section) => (
+            <a
+              key={section}
+              href={getSectionHref(section)}
+              className="text-xs font-mono-code text-[var(--color-secondary)] hover:text-[var(--color-primary)] transition-colors duration-150 py-1"
+            >
+              {section}
+            </a>
+          ))}
+
+          <a
+            href={projectData.socials.find((s) => s.platform.toLowerCase() === "github")?.url || "https://github.com/Shiven48"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 text-xs font-mono-code text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors ml-2 pl-3 border-l border-[var(--color-border)]"
+          >
+            GitHub <ArrowUpRight className="w-3 h-3" />
+          </a>
+        </nav>
+
+        {/* Mobile Menu Toggle */}
+        <div className="md:hidden flex items-center">
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 text-[var(--color-primary)] hover:text-[var(--color-accent)] focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
 
-      {/* Center - Navigation Links */}
-      <ul className="flex items-center space-x-6">
-        {projectData.navSections.map((link) => (
-          <li key={link} className="hover:text-gray-400 text-white">
-            <a href={`#${link.toLowerCase()}`}>{link}</a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+      {/* Mobile Dropdown */}
+      {mobileMenuOpen && (
+        <div className="md:hidden border-b border-[var(--color-border)] bg-[var(--color-surface)] px-4 pt-2 pb-6 space-y-3">
+          <div className="flex flex-col space-y-2">
+            {projectData.navSections.map((section) => (
+              <a
+                key={section}
+                href={getSectionHref(section)}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-sm font-mono-code text-[var(--color-secondary)] hover:text-[var(--color-primary)] py-1.5 px-2 rounded hover:bg-[var(--color-background)] transition-colors"
+              >
+                {section}
+              </a>
+            ))}
+          </div>
+
+          <div className="pt-3 border-t border-[var(--color-border)] flex items-center gap-4">
+            {projectData.socials.map((soc) => (
+              <a
+                key={soc.platform}
+                href={soc.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-mono-code text-[var(--color-secondary)] hover:text-[var(--color-primary)] flex items-center gap-1"
+              >
+                {soc.platform} <ArrowUpRight className="w-3 h-3" />
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </header>
   );
 };
 
