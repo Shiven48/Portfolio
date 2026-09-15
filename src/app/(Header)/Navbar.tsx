@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import projectData from "@/../data/data.json";
-import { Github, Linkedin, Mail, Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,8 +19,8 @@ const Navbar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-[var(--color-surface)]/85 border-b border-[var(--color-border)] transition-colors duration-200">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-[var(--color-surface)]/85 border-b border-[var(--color-border)] transition-colors duration-200 ">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Left: Identity / Monogram */}
         <a
           href="#home"
@@ -55,15 +55,6 @@ const Navbar = () => {
               {section}
             </a>
           ))}
-
-          <a
-            href={projectData.socials.find((s) => s.platform.toLowerCase() === "github")?.url || "https://github.com/Shiven48"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1 text-xs font-mono-code text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors ml-2 pl-3 border-l border-[var(--color-border)]"
-          >
-            GitHub <ArrowUpRight className="w-3 h-3" />
-          </a>
         </nav>
 
         {/* Mobile Menu Toggle */}
