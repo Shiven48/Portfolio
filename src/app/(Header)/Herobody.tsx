@@ -21,12 +21,12 @@ const Herobody = () => {
             <div className="inline-flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
               <span className="text-xs font-mono-code font-semibold tracking-wider text-[var(--color-accent)] uppercase">
-                ML Systems Engineer · Fullstack & CUDA · Mumbai
+                Fullstack AI Systems Engineer · Mumbai
               </span>
             </div>
 
             {/* Main Headline with Accent Underline */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-[var(--color-primary)] leading-[1.15]">
+            <h1 className="text-3xl sm:text-3xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-[var(--color-primary)] leading-[1.15]">
               It started with building{" "}
               <span className="relative inline-block whitespace-nowrap">
                 <span className="relative z-10 text-[var(--color-primary)]">
@@ -39,9 +39,7 @@ const Herobody = () => {
 
             {/* Description / Bio Text */}
             <p className="text-base sm:text-lg text-[var(--color-secondary)] font-normal max-w-xl leading-relaxed">
-              Fullstack developer and systems thinker obsessed with deep learning pipelines,
-              real-time processing, and clean web platforms. Hooked on building resilient software
-              from kernel space to the browser.
+              Fullstack developer and systems thinker.
             </p>
 
             {/* Action Buttons */}
