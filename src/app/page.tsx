@@ -2,7 +2,6 @@ import Navbar from "./(Header)/Navbar";
 import Herobody from "./(Header)/Herobody";
 import { TrajectoryCoverflow } from "@/components/TrajectoryCoverflow";
 import { BlogsSection } from "@/components/BlogsSection";
-import { StatsBanner } from "@/components/StatsBanner";
 import { ContactSection } from "@/components/ContactSection";
 
 export default function Home() {
@@ -21,7 +20,7 @@ export default function Home() {
       <BlogsSection />
 
       {/* Stats & Highlights Bar */}
-      <StatsBanner />
+      {/* <StatsBanner /> */}
 
       {/* Get in Touch & Minimalist Footer */}
       <ContactSection />

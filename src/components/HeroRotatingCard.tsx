@@ -1,98 +1,18 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import projectData from "@/../data/data.json";
-import { ArrowUpRight, Terminal, Clock, ShieldCheck, Activity } from "lucide-react";
+import { ArrowUpRight, Linkedin, Github } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { getRotatingItems, type Socials } from "@/lib/utils";
+import Image from "next/image";
 
-interface RotationItem {
-  type: string;
-  badge: string;
-  title: string;
-  url: string;
-  tagline: string;
-  route: string;
-  signal: string;
-  base: string;
-  details: {
-    route: string;
-    profile: string;
-    status: string;
-  };
-  command: string;
-}
+type RotationItem = Socials;
 
 export function HeroRotatingCard() {
   const [timeString, setTimeString] = useState<string>("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-
-  const items: RotationItem[] = [
-    {
-      type: "NETWORK / GITHUB",
-      badge: "GITHUB",
-      title: "Shiven48",
-      url: "https://github.com/Shiven48",
-      tagline: projectData.socials[0]?.description || "Source code, ML pipelines and Open Source Projects.",
-      route: "/gh/Shiven48",
-      signal: "open_source",
-      base: projectData.Academic.location,
-      details: {
-        route: "github.com/Shiven48",
-        profile: "Systems · Fullstack · Machine Learning",
-        status: "shipping performant code & open algorithms",
-      },
-      command: "curl -s https://api.github.com/users/Shiven48",
-    },
-    {
-      type: "NETWORK / PROFESSIONAL",
-      badge: "LINKEDIN",
-      title: `${projectData.name} ${projectData.surname}`,
-      url: projectData.socials[1]?.url || "https://www.linkedin.com/in/sheven-royal-47bb71328/",
-      tagline: "Engineering robust web platforms, distributed backends, and ML integrations.",
-      route: "/in/sheven-royal",
-      signal: "professional",
-      base: projectData.Academic.location,
-      details: {
-        route: "linkedin.com/in/sheven-royal-47bb71328",
-        profile: "Fullstack Developer & Applied ML",
-        status: "open to high-impact technical conversations",
-      },
-      command: "curl -I linkedin.com/in/sheven-royal-47bb71328",
-    },
-    {
-      type: "SYSTEMS / CORE STACK",
-      badge: "CUDA · ML",
-      title: "Deep Systems & ML",
-      url: "#skills",
-      tagline: projectData.skills.Programming.join(" · "),
-      route: "/sys/runtime",
-      signal: "accelerated",
-      base: "Linux / POSIX",
-      details: {
-        route: "stack.engine/compute",
-        profile: projectData.skills.Programming.slice(0, 4).join(" · "),
-        status: "high performance computing & model deployment",
-      },
-      command: "nvidia-smi --query-gpu=name,driver_version --format=csv",
-    },
-    {
-      type: "PLATFORM / WEB & CLOUD",
-      badge: "NEXT.JS",
-      title: "Fullstack Architecture",
-      url: "#skills",
-      tagline: `${projectData.skills.web.join(" · ")} | ${projectData.skills.cloud.join(", ")}`,
-      route: "/platform/web",
-      signal: "reactive",
-      base: "Cloud / Edge",
-      details: {
-        route: "apps.portfolio/node-edge",
-        profile: "Next.js · React · Docker · FastAPI · SQL",
-        status: "low latency APIs & responsive modern UIs",
-      },
-      command: "docker ps -a --format 'table {{.Names}}\t{{.Status}}'",
-    },
-  ];
+  const items: RotationItem[] = getRotatingItems();
 
   // Clock updater
   useEffect(() => {
@@ -171,10 +91,10 @@ export function HeroRotatingCard() {
             {/* Tag & Pill */}
             <div className="flex items-center justify-between">
               <span className="text-[11px] font-mono-code tracking-wider text-[var(--color-accent)] font-semibold">
-                {current.type}
+                NETWORK / {current.badge}
               </span>
               <span className="text-[10px] font-mono-code font-bold uppercase tracking-wide px-2.5 py-0.5 rounded-full border border-[var(--color-accent)] text-[var(--color-accent)] bg-[var(--color-accent)]/5">
-                {current.badge}
+                {current.badge === "GITHUB" ? <Github className="w-4 h-4" /> : <Linkedin className="w-4 h-4" />}
               </span>
             </div>
 
@@ -186,7 +106,7 @@ export function HeroRotatingCard() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 group text-2xl font-bold tracking-tight text-[var(--color-primary)] hover:text-[var(--color-accent)] transition-colors"
               >
-                <span>{current.title}</span>
+                <span>{current.platform}</span>
                 <ArrowUpRight className="w-5 h-5 text-[var(--color-secondary)] group-hover:text-[var(--color-accent)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
               </a>
               <p className="text-xs sm:text-sm text-[var(--color-secondary)] font-mono-code mt-1 line-clamp-2">
@@ -196,14 +116,6 @@ export function HeroRotatingCard() {
 
             {/* Metadata Grid */}
             <div className="grid grid-cols-3 gap-2 text-[11px] font-mono-code pt-1">
-              <div>
-                <span className="text-[10px] text-[var(--color-secondary)] block uppercase">
-                  ROUTE
-                </span>
-                <span className="font-semibold text-[var(--color-primary)] truncate block">
-                  {current.route}
-                </span>
-              </div>
               <div>
                 <span className="text-[10px] text-[var(--color-secondary)] block uppercase">
                   SIGNAL
@@ -230,9 +142,6 @@ export function HeroRotatingCard() {
               </div>
               <div className="pl-3.5 space-y-1 text-[11px]">
                 <p className="truncate">
-                  <span className="text-[var(--color-accent)]">↳ route:</span> {current.details.route}
-                </p>
-                <p className="truncate">
                   <span className="text-[var(--color-accent)]">↳ profile:</span> {current.details.profile}
                 </p>
                 <p className="truncate">
@@ -245,7 +154,7 @@ export function HeroRotatingCard() {
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--color-surface)] border border-[var(--color-border)] text-xs font-mono-code text-[var(--color-secondary)] overflow-hidden">
               <span className="text-[var(--color-accent)] font-bold">{">"}</span>
               <span className="truncate text-[var(--color-primary)] font-medium">
-                {current.command}
+                curl {current.url}
               </span>
             </div>
           </motion.div>
