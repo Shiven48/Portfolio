@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import projectData from "@/../data/data.json";
-import { BookOpen, ArrowUpRight, Sparkles, Clock, Calendar, PenTool } from "lucide-react";
+import { ArrowUpRight, Clock, Calendar } from "lucide-react";
+import { getBlogs } from "@/lib/utils";
 
 interface BlogEntry {
   title?: string;
@@ -14,58 +14,8 @@ interface BlogEntry {
 }
 
 export function BlogsSection() {
-  // Check if blogs exist in data.json and have non-empty content
-  const rawBlogs = projectData.blogs || [];
-  const validBlogs: BlogEntry[] = rawBlogs.filter(
-    (b: any) =>
-      (typeof b === "string" && b.trim().length > 0) ||
-      (typeof b === "object" && b !== null && b.title && b.title.trim().length > 0)
-  ).map((b: any) => {
-    if (typeof b === "string") {
-      return {
-        title: b,
-        description: "Technical deep-dive on modern architectures, algorithms, and engineering.",
-        date: "2026",
-        readTime: "5 min read",
-        tag: "Engineering",
-        url: "#",
-      };
-    }
-    return b;
-  });
-
-  // Sample planned/draft articles for empty-state preview
-  const draftArticles: BlogEntry[] = [
-    {
-      title: "Optimizing Custom CUDA Kernels for Low-Latency PyTorch Inference",
-      description:
-        "Techniques for eliminating kernel launch overhead, memory coalescence, and async streaming in real-time edge workloads.",
-      date: "Upcoming",
-      readTime: "8 min read",
-      tag: "CUDA · ML Systems",
-      url: "#",
-    },
-    {
-      title: "Architecting Resilient Real-Time Event Streams with Next.js & FastAPI",
-      description:
-        "Building bidirectional WebSockets and SSE pipelines with distributed workers and minimal memory footprint.",
-      date: "Upcoming",
-      readTime: "6 min read",
-      tag: "Web Architecture",
-      url: "#",
-    },
-    {
-      title: "Multi-Hop Knowledge Graphs & Vector Search for Multi-Modal RAG",
-      description:
-        "Bridging structured entity graphs with dense vector embeddings for scalable contextual retrieval.",
-      date: "Upcoming",
-      readTime: "7 min read",
-      tag: "Vector DB · RAG",
-      url: "#",
-    },
-  ];
-
-  const displayedPosts = validBlogs.length > 0 ? validBlogs : draftArticles;
+  const validBlogs: BlogEntry[] = getBlogs();
+  const displayedPosts = validBlogs.length > 0 ? validBlogs : [];
   const isDraftState = validBlogs.length === 0;
 
   return (
