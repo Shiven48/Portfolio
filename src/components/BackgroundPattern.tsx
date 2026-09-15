@@ -29,15 +29,10 @@ export function BackgroundPattern() {
     switch (pattern) {
       case "grid":
         return "pattern-grid";
-      case "dots":
-        return "pattern-dots";
-      case "cross":
-        return "pattern-cross";
       case "blueprint":
         return "pattern-blueprint";
-      case "none":
       default:
-        return "pattern-none";
+        return "pattern-blueprint";
     }
   };
 
@@ -49,15 +44,6 @@ export function BackgroundPattern() {
       {/* Pattern Canvas */}
       <div
         className={`absolute inset-0 opacity-80 ${getPatternClass()} transition-opacity duration-300`}
-      />
-
-      {/* Subtle radial ambient highlight for depth */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] opacity-15 blur-[120px] pointer-events-none rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle, var(--color-accent) 0%, transparent 70%)",
-        }}
       />
     </div>
   );
