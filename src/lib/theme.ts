@@ -2,11 +2,7 @@ import palettesData from "@/../data/palettes.json";
 
 export type PaletteId =
   | "mono-blue"
-  | "warm-amber"
-  | "slate-teal"
-  | "lavender-violet"
   | "dark-terminal"
-  | "editorial-red";
 
 export interface PaletteColors {
   colorBackground: string;
