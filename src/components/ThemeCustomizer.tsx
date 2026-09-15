@@ -4,18 +4,16 @@ import React, { useEffect, useState } from "react";
 import { palettes, getPalette, paletteToCssVars, PaletteId } from "@/lib/theme";
 import { Palette as PaletteIcon, Grid, Sliders, Check, ChevronDown, Sparkles } from "lucide-react";
 
-export type PatternType = "grid" | "dots" | "cross" | "blueprint" | "none";
+export type PatternType = "grid" | "blueprint";
+export type SkillPatternType = "default" | "filterable" | "hierarchy";
 
 const PATTERNS: { id: PatternType; name: string }[] = [
   { id: "grid", name: "Modern Grid" },
-  { id: "dots", name: "Dot Matrix" },
-  { id: "cross", name: "Plus / Cross" },
   { id: "blueprint", name: "Blueprint" },
-  { id: "none", name: "Clean / Solid" },
 ];
 
 export function ThemeCustomizer({
-  initialPalette = "mono-blue",
+  initialPalette = "dark-terminal",
 }: {
   initialPalette?: PaletteId;
 }) {
@@ -98,15 +96,12 @@ export function ThemeCustomizer({
                   Live Style Configurator
                 </span>
               </div>
-              <span className="text-[10px] font-mono-code px-1.5 py-0.5 rounded bg-[var(--color-border)] text-[var(--color-secondary)]">
-                Local Preview
-              </span>
             </div>
 
             {/* Palettes Selection */}
             <div className="mb-4">
               <label className="flex items-center gap-1.5 text-xs font-medium text-[var(--color-secondary)] mb-2">
-                <PaletteIcon className="w-3.5 h-3.5" /> Color Palette (6 Tokens)
+                <PaletteIcon className="w-3.5 h-3.5" /> Color Palette
               </label>
               <div className="grid grid-cols-2 gap-2">
                 {palettes.map((p) => {
@@ -182,10 +177,6 @@ export function ThemeCustomizer({
                   );
                 })}
               </div>
-            </div>
-
-            <div className="mt-4 pt-2.5 border-t border-[var(--color-border)] text-[10px] text-[var(--color-secondary)] font-mono-code text-center">
-              Flag: NEXT_PUBLIC_PALETTE={activePalette}
             </div>
           </div>
         )}
