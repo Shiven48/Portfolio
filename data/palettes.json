@@ -15,48 +15,6 @@
       }
     },
     {
-      "id": "warm-amber",
-      "name": "Warm Neutral + Amber",
-      "colors": {
-        "colorBackground": "#FAF9F6",
-        "colorSurface": "#FFFFFF",
-        "colorPrimary": "#1C1C1A",
-        "colorSecondary": "#78716C",
-        "colorBorder": "#E7E5E4",
-        "colorAccent": "#D97706",
-        "colorCta": "#292524",
-        "colorCtaText": "#FFFFFF"
-      }
-    },
-    {
-      "id": "slate-teal",
-      "name": "Cool Slate + Teal",
-      "colors": {
-        "colorBackground": "#F8FAFC",
-        "colorSurface": "#FFFFFF",
-        "colorPrimary": "#0F172A",
-        "colorSecondary": "#64748B",
-        "colorBorder": "#E2E8F0",
-        "colorAccent": "#0D9488",
-        "colorCta": "#0F172A",
-        "colorCtaText": "#FFFFFF"
-      }
-    },
-    {
-      "id": "lavender-violet",
-      "name": "Soft Lavender + Violet",
-      "colors": {
-        "colorBackground": "#FAFAFC",
-        "colorSurface": "#FFFFFF",
-        "colorPrimary": "#18181B",
-        "colorSecondary": "#71717A",
-        "colorBorder": "#E4E4E7",
-        "colorAccent": "#7C3AED",
-        "colorCta": "#27272A",
-        "colorCtaText": "#FFFFFF"
-      }
-    },
-    {
       "id": "dark-terminal",
       "name": "Dark Mode Terminal",
       "colors": {
@@ -68,20 +26,6 @@
         "colorAccent": "#22C55E",
         "colorCta": "#F5F5F5",
         "colorCtaText": "#0A0A0A"
-      }
-    },
-    {
-      "id": "editorial-red",
-      "name": "Editorial Black & Red",
-      "colors": {
-        "colorBackground": "#FFFFFF",
-        "colorSurface": "#FAFAFA",
-        "colorPrimary": "#000000",
-        "colorSecondary": "#525252",
-        "colorBorder": "#E5E5E5",
-        "colorAccent": "#DC2626",
-        "colorCta": "#171717",
-        "colorCtaText": "#FFFFFF"
       }
     }
   ]

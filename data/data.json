@@ -5,14 +5,28 @@
   "email_placeholder": "Shevenroyal",
   "socials": [
     {
-      "platform": "github", 
+      "platform": "Github",
+      "badge": "GITHUB",
       "url": "https://github.com/Shiven48",
-      "description": "Source code and Open Source Projects"
+      "tagline": "Source code and Open Source Projects",
+      "signal": "Source Code",
+      "base": "Mumbai, India",
+      "details": {
+        "profile": "Systems · Fullstack · Machine Learning",
+        "status": "shipping performant code & open algorithms"
+      }
     },
     {
-      "platform": "LinkedIn", 
+      "platform": "LinkedIn",
+      "badge": "LINKEDIN",
       "url": "https://www.linkedin.com/in/sheven-royal-47bb71328/",
-      "description": "Source code and Open Source Projects"
+      "tagline": "Professional Network and Career Opportunities",
+      "signal": "Professional",
+      "base": "Mumbai, India",
+      "details": {
+        "profile": "Fullstack Developer & Applied ML",
+        "status": "open to high-impact technical conversations"
+      }
     }
   ],
   "skills" :{
@@ -21,6 +35,7 @@
     "web": ["React", "Next.js", "Node.js", "FastAPI", "TailwindCSS"],
     "persistence": ["PostgreSQL", "MySQL", "SQLite"]
   },
+  "packagesDeployed": ["This are the python libraries i will be publishing on PyPI"],
   "Academic": {
     "course": "B.E in Information Technology",
     "duration": "2022 - 2026",
@@ -36,11 +51,11 @@
       {
         "id": 1,
         "title": "SilentGuard",
-        "role": "",
+        "role": "AI Systems Engineer",
         "description": [
-          ""
+          "Real-time edge acoustic intelligence and neural noise isolation with low latency inference."
         ],
-        "problemStatement": "",
+        "problemStatement": "Sub-15ms edge inference on constrained sensor hardware.",
         "isAccessibleByUrl": true,
         "url": "https://silentguard.ai"
       },
@@ -49,48 +64,83 @@
         "title": "Labridge",
         "role": "LIS Developer Intern",
         "description": [
-          ""
+          "Clinical laboratory information system connector optimizing high-throughput diagnostic telemetry."
         ],
-        "problemStatement": "",
+        "problemStatement": "Standardizing fragmented multi-vendor medical data streams.",
         "isAccessibleByUrl": false,
         "url": ""
       },
       {
         "id": 3,
         "title": "Livprint",
-        "role": "",
+        "role": "Android Developer and Infrastructure Engineer",
         "description": [
-          ""
+          "Handelled the test infra via Coolify and made an android app for the organisation"
         ],
-        "problemStatement": "",
+        "problemStatement": "Made an MVP of product to showcase it in an expo",
         "isAccessibleByUrl": false,
         "url": ""
       },
       {
         "id": 4,
         "title": "Astmio",
-        "role": "",
+        "role": "Open Source Creator",
         "description": [
-          ""
+          "An Open source framework for making LIS for ASTM protocol supported machines"
         ],
-        "problemStatement": "",
+        "problemStatement": "LIS systems are very costly and are not accessible to everyone",
         "isAccessibleByUrl": true,
         "url": "https://github.com/Shiven48/Astmio"
       },
       {
         "id": 5,
         "title": "LinnkedOut",
-        "role": "",
+        "role": "Full Stack AI Engineer",
         "description": [
-          ""
+          "Knowledge graph explorer and vector recommendation engine powered by embeddings and multi-hop traversal"
         ],
-        "problemStatement": "",
+        "problemStatement": "The online world is now pushing algorithmic bias so this is to provide a platform where you can get rid of it and get recommendations based on your interest.",
         "isAccessibleByUrl": true,
-        "url": ""
+        "url": "https://linnked-out-beta.vercel.app/"
       }
   ],
   "blogs": [
-    ""
+    {
+      "title": "Optimizing Custom CUDA Kernels for Low-Latency PyTorch Inference",
+      "description":
+        "Techniques for eliminating kernel launch overhead, memory coalescence, and async streaming in real-time edge workloads.",
+      "date": "Upcoming",
+      "readTime": "8 min read",
+      "tag": "CUDA · ML Systems",
+      "url": "#"
+    },
+    {
+      "title": "Architecting Resilient Real-Time Event Streams with Next.js & FastAPI",
+      "description":
+        "Building bidirectional WebSockets and SSE pipelines with distributed workers and minimal memory footprint.",
+      " date": "Upcoming",
+      "readTime": "6 min read",
+      "tag": "Web Architecture",
+      "url": "#"
+    },
+    {
+      "title": "Multi-Hop Knowledge Graphs & Vector Search for Multi-Modal RAG",
+      "description":
+        "Bridging structured entity graphs with dense vector embeddings for scalable contextual retrieval.",
+      "date": "Upcoming",
+      "readTime": "7 min read",
+      "tag": "Vector DB · RAG",
+      "url": "#"
+    },
+    {
+      "title": "Multi-Hop Knowledge Graphs & Vector Search for Multi-Modal RAG",
+      "description":
+        "Bridging structured entity graphs with dense vector embeddings for scalable contextual retrieval.",
+      "date": "Upcoming",
+      "readTime": "7 min read",
+      "tag": "Vector DB · RAG",
+      "url": "#"
+    }
   ],
   "navSections": ["Home", "About", "Skills", "Projects", "Contact"]
 }
