@@ -19,7 +19,7 @@ export function BlogsSection() {
   const isDraftState = validBlogs.length === 0;
 
   return (
-    <section id="blogs" className="w-full py-16 md:py-24 transition-colors">
+    <section id="blogs" className="w-full py-16 md:py-20 transition-colors">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between pb-8 mb-8 border-b border-[var(--color-border)] gap-4">
