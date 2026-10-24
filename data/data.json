@@ -61,9 +61,9 @@
         "problemStatement": "Sub-15ms edge inference on constrained sensor hardware.",
         "isAccessibleByUrl": true,
         "url": "https://silentguard.ai",
-        "caseStudyUrl": "/experience/silentguard",
+        "caseStudyUrl": "/writings/silentguard",
         "highlights": ["300ms Latency", "Local First", "500+ supported Platforms", "10+ supported Doc Types"],
-        "isCaseStudyAvailable": true
+        "isCaseStudyAvailable": false
       },
       {
         "id": 2,
@@ -75,7 +75,7 @@
         "problemStatement": "Standardizing fragmented multi-vendor medical data streams.",
         "isAccessibleByUrl": false,
         "url": "https://labridge.in",
-        "caseStudyUrl": "/experience/labridge",
+        "caseStudyUrl": "/writings/labridge",
         "highlights": ["HIPPA Compliant", "100% data integrity", "HL7 Protocol", "Realtime Local Record Processing"],
         "isCaseStudyAvailable": true
       },
@@ -135,7 +135,7 @@
       "title": "Architecting Resilient Real-Time Event Streams with Next.js & FastAPI",
       "description":
         "Building bidirectional WebSockets and SSE pipelines with distributed workers and minimal memory footprint.",
-      " date": "Upcoming",
+      "date": "Upcoming",
       "readTime": "6 min read",
       "tag": "Web Architecture",
       "url": "#"
@@ -159,7 +159,7 @@
       "url": "#"
     }
   ],
-  "navSections": ["Home", "About", "Contact"],
+  "navSections": ["Home", "About", "Writings", "Contact"],
   "assets": [
     {
       "id": 1,
