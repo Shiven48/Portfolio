@@ -97,7 +97,7 @@ export default function LabridgeCaseStudy() {
             This case study describes the design and development of a custom Laboratory Information System (LIS) built to integrate with a hematology analyzer and its vendor LIS. The project addressed a common but under-documented problem in healthcare IT: proprietary LIS software with no public documentation, no standard field mappings, and no universal parser.
           </p>
           <blockquote className="my-3 pl-4 border-l-2 border-[#3ecf8e]/60 bg-emerald-500/[0.04] py-2.5 pr-3 rounded-r text-[13px] sm:text-[14px] leading-[1.75] text-[var(--color-primary)]/90 italic">
-            The result was a configurable, modular LIS that reliably receives, parses, validates, persists, and exposes lab result data. It removed dependency on third-party LIS vendors for business reliability, reduced operational costs, and processed 100–500 results per day with 100% parsing accuracy in real time. The system became a critical piece of the lab&apos;s daily operations.
+            The result was a configurable, modular LIS that reliably receives, parses, validates, persists, and exposes lab result data. It removed dependency on third-party LIS vendors for business reliability, reduced operational costs, and processed results with 100% parsing accuracy in real time. The system became a critical piece of the lab&apos;s daily operations.
           </blockquote>
         </section>
 
@@ -156,7 +156,7 @@ export default function LabridgeCaseStudy() {
               </div>
             </div>
             <p className="text-[11px] text-[var(--color-secondary)] mt-1.5 text-center font-mono-code">
-              Figure 1: Erba Elite 580 5-Part Differential Hematology Analyzer deployed on-site
+              Figure 1: Erba Elite 580 Hematology Analyzer deployed on-site
             </p>
           </div>
         </section>
