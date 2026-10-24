@@ -46,10 +46,10 @@ export function BlogsSection() {
               </span>
             )}
             <a
-              href="#blogs"
+              href="/writings"
               className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-mono-code font-medium border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-primary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all shadow-sm"
             >
-              <span>All articles</span>
+              <span>All writings</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>
