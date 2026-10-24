@@ -12,6 +12,12 @@ const PATTERNS: { id: PatternType; name: string }[] = [
   { id: "blueprint", name: "Blueprint" },
 ];
 
+export const SKILL_PATTERNS: { id: SkillPatternType; name: string; desc: string }[] = [
+  { id: "default", name: "Default (Inline Rows)", desc: "Horizontal rows with category indicators" },
+  { id: "filterable", name: "Filterable Cloud", desc: "Interactive category tag cloud" },
+  { id: "hierarchy", name: "Hierarchical Pattern", desc: "Structured cards with colored accents" },
+];
+
 export function ThemeCustomizer({
   initialPalette = "dark-terminal",
 }: {
@@ -19,6 +25,7 @@ export function ThemeCustomizer({
 }) {
   const [activePalette, setActivePalette] = useState<PaletteId>(initialPalette);
   const [activePattern, setActivePattern] = useState<PatternType>("grid");
+  const [activeSkillPattern, setActiveSkillPattern] = useState<SkillPatternType>("default");
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -26,7 +33,6 @@ export function ThemeCustomizer({
     setMounted(true);
     const savedPalette = localStorage.getItem("portfolio-palette") as PaletteId;
     const savedPattern = localStorage.getItem("portfolio-pattern") as PatternType;
-
     if (savedPalette && palettes.some((p) => p.id === savedPalette)) {
       setActivePalette(savedPalette);
     }
@@ -62,6 +68,15 @@ export function ThemeCustomizer({
     );
   }, [activePattern, mounted]);
 
+  useEffect(() => {
+    if (!mounted) return;
+
+    localStorage.setItem("portfolio-skill-pattern", activeSkillPattern);
+    window.dispatchEvent(
+      new CustomEvent("skill-pattern-change", { detail: activeSkillPattern })
+    );
+  }, [activeSkillPattern, mounted]);
+
   return (
     <div className="fixed bottom-6 right-6 z-50">
       {/* Floating Toggle Pill */}
@@ -88,7 +103,7 @@ export function ThemeCustomizer({
 
         {/* Flyout Control Panel */}
         {isOpen && (
-          <div className="absolute bottom-12 right-0 w-80 p-4 rounded-2xl shadow-2xl border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-primary)] backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150">
+          <div className="absolute bottom-12 right-0 w-84 sm:w-96 p-4 rounded-2xl shadow-2xl border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-primary)] backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150 max-h-[85vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-3 mb-3 border-b border-[var(--color-border)]">
               <div className="flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-[var(--color-accent)]" />
@@ -154,7 +169,7 @@ export function ThemeCustomizer({
             </div>
 
             {/* Background Pattern Selection */}
-            <div>
+            <div className="mb-4">
               <label className="flex items-center gap-1.5 text-xs font-medium text-[var(--color-secondary)] mb-2">
                 <Grid className="w-3.5 h-3.5" /> Background Pattern
               </label>
