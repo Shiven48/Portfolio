@@ -3,6 +3,8 @@ import Herobody from "./(Header)/Herobody";
 import { TrajectoryCoverflow } from "@/components/TrajectoryCoverflow";
 import { BlogsSection } from "@/components/BlogsSection";
 import { ContactSection } from "@/components/ContactSection";
+import projectData from "@/../data/data.json";
+import { StatsBanner } from "@/components/StatsBanner";
 
 export default function Home() {
   return (
@@ -17,12 +19,15 @@ export default function Home() {
       <TrajectoryCoverflow />
 
       {/* Selected Writings / Blogs (Task 5: In place of selected work) */}
-      <BlogsSection />
+      {projectData.blogs.length > 0 && (
+        <BlogsSection />
+      )}
 
       {/* Stats & Highlights Bar */}
-      {/* <StatsBanner /> */}
+      <StatsBanner />
 
       {/* Get in Touch & Minimalist Footer */}
+      <div className="w-full max-w-6xl h-[1px] bg-[color-mix(in_srgb,var(--color-secondary)_60%,transparent)] mx-auto"/>
       <ContactSection />
     </main>
   );

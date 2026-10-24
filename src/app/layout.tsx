@@ -4,6 +4,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import { getPalette, paletteToCssVars, PaletteId } from "@/lib/theme";
 import { BackgroundPattern } from "@/components/BackgroundPattern";
 import { ThemeCustomizer } from "@/components/ThemeCustomizer";
+import projectData from "@/../data/data.json";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,7 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Shiven Royal — Fullstack & ML Engineer",
+  title: `${projectData.name} ${projectData.surname} — ${projectData.role}`,
   description:
     "Portfolio of Shiven Royal — Systems, Fullstack Engineering, Machine Learning, and Open Source Projects.",
 };
