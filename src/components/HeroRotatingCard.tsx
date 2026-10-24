@@ -3,8 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { ArrowUpRight, Linkedin, Github } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { getRotatingItems, type Socials } from "@/lib/utils";
-import Image from "next/image";
+import { getSocials, type Socials } from "@/lib/utils";
 
 type RotationItem = Socials;
 
@@ -12,7 +11,7 @@ export function HeroRotatingCard() {
   const [timeString, setTimeString] = useState<string>("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const items: RotationItem[] = getRotatingItems();
+  const items: RotationItem[] = getSocials();
 
   // Clock updater
   useEffect(() => {
