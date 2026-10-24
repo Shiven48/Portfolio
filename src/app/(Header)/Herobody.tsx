@@ -1,9 +1,10 @@
 "use client";
 
 import React from "react";
-import { ArrowRight, Mail, Sparkles } from "lucide-react";
+import { ArrowRight, Mail, Book } from "lucide-react";
 import { motion } from "framer-motion";
 import { HeroRotatingCard } from "@/components/HeroRotatingCard";
+import projectData from "@/../data/data.json";
 
 const Herobody = () => {
   return (
@@ -21,25 +22,25 @@ const Herobody = () => {
             <div className="inline-flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
               <span className="text-xs font-mono-code font-semibold tracking-wider text-[var(--color-accent)] uppercase">
-                Fullstack AI Systems Engineer · Mumbai
+                {projectData.role} · Mumbai
               </span>
             </div>
 
             {/* Main Headline with Accent Underline */}
             <h1 className="text-3xl sm:text-3xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-[var(--color-primary)] leading-[1.15]">
-              It started with building{" "}
+              PLACEHOLDER{" "}
               <span className="relative inline-block whitespace-nowrap">
                 <span className="relative z-10 text-[var(--color-primary)]">
-                  scalable systems
+                  PLACEHOLDER
                 </span>
                 <span className="absolute bottom-1 left-0 w-full h-[6px] bg-[var(--color-accent)]/35 -z-0 rounded-full" />
               </span>{" "}
-              and algorithms that learn.
+              PLACEHOLDER
             </h1>
 
             {/* Description / Bio Text */}
             <p className="text-base sm:text-lg text-[var(--color-secondary)] font-normal max-w-xl leading-relaxed">
-              Fullstack developer and systems thinker.
+              PLACEHOLDER.
             </p>
 
             {/* Action Buttons */}
@@ -58,6 +59,14 @@ const Herobody = () => {
               >
                 <Mail className="w-4 h-4 text-[var(--color-secondary)]" />
                 <span>Get in touch</span>
+              </a>
+
+              <a
+                href="https://sg-res.tiiny.site"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold btn-outline-custom shadow-sm transition-all"
+              >
+                <Book className="w-4 h-4 text-[var(--color-secondary)]" />
+                <span>Resume</span>
               </a>
             </div>
           </motion.div>
