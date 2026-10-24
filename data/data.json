@@ -1,8 +1,10 @@
 {
   "name": "Shiven",
   "surname": "Royal",
-  "email": "Shevenroyal@gmail.com",
+  "email": "shiven.royal.work@gmail.com",
   "email_placeholder": "Shevenroyal",
+  "role": "Full Stack AI Engineer",
+  "vision": "I am someone who loves to know how computer systems in general work at the bits level",
   "socials": [
     {
       "platform": "Github",
@@ -19,7 +21,7 @@
     {
       "platform": "LinkedIn",
       "badge": "LINKEDIN",
-      "url": "https://www.linkedin.com/in/sheven-royal-47bb71328/",
+      "url": "https://www.linkedin.com/in/shiven-royal/",
       "tagline": "Professional Network and Career Opportunities",
       "signal": "Professional",
       "base": "Mumbai, India",
@@ -30,10 +32,11 @@
     }
   ],
   "skills" :{
-    "Programming": [ "Python", "C++", "CUDA", "Bash", "GStreamer", "TypeScript", "Machine Learning" ],
-    "cloud": ["Docker", "github actions"],
-    "web": ["React", "Next.js", "Node.js", "FastAPI", "TailwindCSS"],
-    "persistence": ["PostgreSQL", "MySQL", "SQLite"]
+    "Programming": [ "Python", "TypeScript", "Bash", "Java", "C", "Assembly (x86/64 - NASM)"],
+    "Cloud": ["Docker", "Github Actions", "Cloudflare", "Coolify"],
+    "Web": ["React.js", "Next.js", "Node.js", "TanStack", "Zustand", "FastAPI", "TailwindCSS", "Spring Boot"],
+    "AI": ["PyTorch", "CrewAI", "Antigravity SDK"],
+    "Persistence": ["PostgreSQL", "MySQL", "SQLite"]
   },
   "packagesDeployed": ["This are the python libraries i will be publishing on PyPI"],
   "Academic": {
@@ -57,7 +60,10 @@
         ],
         "problemStatement": "Sub-15ms edge inference on constrained sensor hardware.",
         "isAccessibleByUrl": true,
-        "url": "https://silentguard.ai"
+        "url": "https://silentguard.ai",
+        "caseStudyUrl": "/experience/silentguard",
+        "highlights": ["300ms Latency", "Local First", "500+ supported Platforms", "10+ supported Doc Types"],
+        "isCaseStudyAvailable": true
       },
       {
         "id": 2,
@@ -68,7 +74,10 @@
         ],
         "problemStatement": "Standardizing fragmented multi-vendor medical data streams.",
         "isAccessibleByUrl": false,
-        "url": ""
+        "url": "https://labridge.in",
+        "caseStudyUrl": "/experience/labridge",
+        "highlights": ["HIPPA Compliant", "100% data integrity", "HL7 Protocol", "Realtime Local Record Processing"],
+        "isCaseStudyAvailable": true
       },
       {
         "id": 3,
@@ -79,7 +88,9 @@
         ],
         "problemStatement": "Made an MVP of product to showcase it in an expo",
         "isAccessibleByUrl": false,
-        "url": ""
+        "url": "https://www.livprintlabs.com",
+        "highlights": ["Self-Hosted Dev Infra", "CMS-Decoupled Data Layer", "Docker + Coolify Managed", "Mobile App via Expo"],
+        "isCaseStudyAvailable": false
       },
       {
         "id": 4,
@@ -90,7 +101,10 @@
         ],
         "problemStatement": "LIS systems are very costly and are not accessible to everyone",
         "isAccessibleByUrl": true,
-        "url": "https://github.com/Shiven48/Astmio"
+        "url": "https://github.com/Shiven48/Astmio",
+        "caseStudyUrl": null,
+        "highlights" : null,
+        "isCaseStudyAvailable": false
       },
       {
         "id": 5,
@@ -101,7 +115,10 @@
         ],
         "problemStatement": "The online world is now pushing algorithmic bias so this is to provide a platform where you can get rid of it and get recommendations based on your interest.",
         "isAccessibleByUrl": true,
-        "url": "https://linnked-out-beta.vercel.app/"
+        "url": "https://linnked-out-beta.vercel.app/",
+        "caseStudyUrl": null,
+        "highlights" :null,
+        "isCaseStudyAvailable": false
       }
   ],
   "blogs": [
@@ -142,5 +159,83 @@
       "url": "#"
     }
   ],
-  "navSections": ["Home", "About", "Skills", "Projects", "Contact"]
+  "navSections": ["Home", "About", "Contact"],
+  "assets": [
+    {
+      "id": 1,
+      "title": "SilentGuard Extension Popup UI",
+      "path": "/images/silentguard/sg-ext.webp",
+      "type": "webp",
+      "width": "360px",
+      "height": "360px",
+      "project": "silentguard"
+    },
+    {
+      "id": 2,
+      "title": "SilentGuard Live Monitoring Dashboard",
+      "path": "/images/silentguard/sg-dash.png",
+      "type": "png",
+      "width": "800px",
+      "height": "450px",
+      "project": "silentguard"
+    },
+    {
+      "id": 3,
+      "title": "Erba Elite 580 Hematology Analyzer",
+      "path": "/images/labridge/I-1.jpeg",
+      "type": "jpeg",
+      "width": "800px",
+      "height": "600px",
+      "project": "labridge"
+    },
+    {
+      "id": 4,
+      "title": "Network Diagnosis",
+      "path": "/images/labridge/I-3.jpeg",
+      "type": "jpeg",
+      "width": "800px",
+      "height": "600px",
+      "project": "labridge"
+    },
+    {
+      "id": 5,
+      "title": "Logs Snapshot",
+      "path": "/images/labridge/I-4.jpeg",
+      "type": "jpeg",
+      "width": "800px",
+      "height": "600px",
+      "project": "labridge"
+    },
+    {
+      "id": 6,
+      "title": "Parser Configuration for analyzer profiles",
+      "path": "/images/labridge/I-5.png",
+      "type": "png",
+      "width": "800px",
+      "height": "450px",
+      "project": "labridge"
+    }
+  ],
+  "internalCaseStudy":{
+    "silentguard": {
+      "ref": 1,
+      "timeline": "Jan 2026 – Present",
+      "roleDetails": "Designing and implementing a local dlp engine for inline ai sessions for catching the sensitive data leaks and auditing sessions all in a single chrome extension",
+      "detailedProblemStatement":"There was no such DLP engine that was capable of running on a lower end machine with low latency. All of the solutions were cloud based and also expensive and were hard to setup. All of the solutions didnt support the document types that too in low latency and the configurability of the existing engines were also not upto the mark. So making a native solution that runs on consumer machines in low cost supporting hundreds of guardrails and platforms with maximum configurability was the goal. Also, the solution has another mode that can audit the browser ai sessions in order to trace the user sessions and audit them and make them more secure while totally offloading legal liability and compliance burden from the user.",
+      "detailedSolution": [
+        "Designing a low maintainable system with high performance that can audit the ai tools sessions on the browser",
+        "Using a qunatised onnx model for catching the non deterministic guardrails",
+        "Using regex for the simple and guardrails having a common pattern",
+        "Supporting multiple files and bigger prompt in two pass so that while the user is chatting in with the model the context of the documents is already redacted in the first pass before passing the prompt to the model",
+        "We shifted from a local microservice architecture that talks via pipes to a single fused extension architecture for more security and less latency",
+        "We properly segregated our content-scripts(the interceptor), the background scripts(the processor) and the offscreen document(for model inferencing)"
+      ],
+      "techStack": ["TypeScript", "TailwindCSS", "Chrome MV3 API", "ONNX Runtime"],
+      "challenges": [
+        "Running the model under 100MBs and making it run under 500ms for low latency and high user experience",
+        "Making sure if any query has violated any harmful guardrail then immediatedly cut the loop and notify the user",
+        "Integrating the application with 500 ai tools and making sure that the interception dont break in case of minor changes in UI of that tool"
+      ]
+    }
+  }
 }
