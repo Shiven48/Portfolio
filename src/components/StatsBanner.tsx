@@ -2,7 +2,7 @@
 
 import React from "react";
 import projectData from "@/../data/data.json";
-import { Sparkles, Radio, Star, GitBranch } from "lucide-react";
+import { Sparkles,GitBranch } from "lucide-react";
 
 export function StatsBanner() {
   return (
@@ -22,12 +22,12 @@ export function StatsBanner() {
         {/* Right: Quantifiable Stats */}
         <div className="flex items-center gap-4 text-xs font-mono-code text-[var(--color-accent)] font-semibold">
           <span className="flex items-center gap-1.5">
-            <GitBranch className="w-3.5 h-3.5" /> 5+ Production Projects
+            <GitBranch className="w-3.5 h-3.5" /> {projectData.projectMeta.ExperienceSection.length}+ Production Projects
           </span>
           <span className="text-[var(--color-border)]">·</span>
-          <span className="flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5" /> CUDA & PyTorch ML
-          </span>
+          {/* <span className="flex items-center gap-1.5"> */}
+            {/* <Sparkles className="w-3.5 h-3.5" /> CUDA & PyTorch ML */}
+          {/* </span> */}
           <span className="text-[var(--color-border)]">·</span>
           <span>{projectData.Academic.location}</span>
         </div>
