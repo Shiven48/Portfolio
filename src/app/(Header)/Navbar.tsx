@@ -16,7 +16,7 @@ const Navbar = () => {
     if (slug === "about") return "/about";
     if (slug === "projects") return "/projects";
     if (slug === "contact") return "/contact";
-    if (slug === "blogs") return "/blogs";
+    if (slug === "blogs") return "/writings";
     return `/${slug}`;
   };
 
@@ -32,7 +32,7 @@ const Navbar = () => {
       case "contact":
         return pathname === "/contact" || pathname?.startsWith("/contact");
       case "blogs":
-        return pathname === "/blogs" || pathname?.startsWith("/blogs");
+        return pathname === "/writings" || pathname?.startsWith("/writings");
     }
     return false;
   };
