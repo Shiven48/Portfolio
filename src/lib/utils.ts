@@ -77,13 +77,24 @@ export const getBlogs = (): Blogs[] => {
   return blogs;
 }
 
+export const getAllBlogs = (): Blogs[] => {
+  return [...ProjectData.blogs] as Blogs[];
+}
+
+export const getCaseStudies = (): Project[] => {
+  const caseStudies = [...ProjectData.projects].filter((projects: Project) => {
+    return projects.isCaseStudyAvailable === true;
+  }) as Project[];
+  return caseStudies;
+}
+
 export const getProjects = (priority?: Priority): Project[] => {
   let usedPrio:Priority = Priority.Experience;
 
   if(!priority){
     usedPrio = Priority.Experience;
   } else if(priority === Priority.Experience) {
-    usedPrio = Priority.Experience;
+    usedPrio = Priority.Experience; 
   } else if(priority === Priority.Personal) {
     usedPrio = Priority.Personal;
   }
