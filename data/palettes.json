@@ -1,20 +1,6 @@
 {
   "palettes": [
     {
-      "id": "mono-blue",
-      "name": "Monochrome + Electric Blue",
-      "colors": {
-        "colorBackground": "#FAFAFA",
-        "colorSurface": "#FFFFFF",
-        "colorPrimary": "#111111",
-        "colorSecondary": "#6B7280",
-        "colorBorder": "#E5E7EB",
-        "colorAccent": "#2563EB",
-        "colorCta": "#18181B",
-        "colorCtaText": "#FFFFFF"
-      }
-    },
-    {
       "id": "dark-terminal",
       "name": "Dark Mode Terminal",
       "colors": {
