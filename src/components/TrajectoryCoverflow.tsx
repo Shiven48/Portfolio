@@ -7,15 +7,15 @@ import {
   ChevronRight,
   ExternalLink,
   ArrowUpRight,
-  Terminal,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { getProjects, Project } from "@/lib/utils";
+import { AssetMeta, getHomePageAssets, getProjects, Project } from "@/lib/utils";
 
 export function TrajectoryCoverflow() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const filteredProjects: Project[] = getProjects(); 
+  const homeAssets:AssetMeta[] = getHomePageAssets();
 
   // 5.0s auto rotation timer
   useEffect(() => {
@@ -36,10 +36,8 @@ export function TrajectoryCoverflow() {
     setActiveIndex((prev) => (prev + 1) % filteredProjects.length);
   };
 
-  const currentProject = filteredProjects[activeIndex] || filteredProjects[0];
-
   return (
-    <section id="trajectory" className="w-full py-16 md:py-24 transition-colors">
+    <section id="trajectory" className="w-full py-12 md:py-16 transition-colors">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between pb-8 mb-4 border-b border-[var(--color-border)] gap-4">
@@ -83,11 +81,11 @@ export function TrajectoryCoverflow() {
         <div
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
-          className="relative py-8 min-h-[460px] flex flex-col justify-center items-center overflow-hidden"
+          className="relative py-6 sm:py-8 min-h-[520px] sm:min-h-[550px] flex flex-col justify-center items-center overflow-hidden"
         >
           {/* Coverflow Cards Container */}
           <div className="w-full flex items-center justify-center relative perspective-[1200px]">
-            <div className="w-full max-w-4xl flex items-center justify-center gap-4 sm:gap-6 relative min-h-[380px]">
+            <div className="w-full max-w-4xl flex items-center justify-center gap-4 sm:gap-6 relative min-h-[430px] sm:min-h-[450px]">
               {filteredProjects.map((item, index) => {
                 const total = filteredProjects.length;
                 // Calculate distance relative to active index
@@ -107,7 +105,7 @@ export function TrajectoryCoverflow() {
                     key={item.id}
                     onClick={() => setActiveIndex(index)}
                     animate={{
-                      scale: isCenter ? 1.15 : 0.88,
+                      scale: isCenter ? 1.04 : 0.88,
                       x: isCenter ? 0 : isLeft ? "-45%" : "45%",
                       rotateY: isCenter ? 0 : isLeft ? 14 : -14,
                       zIndex: isCenter ? 40 : 10,
@@ -124,9 +122,9 @@ export function TrajectoryCoverflow() {
                         : "surface-card border-[var(--color-border)] shadow-md z-10 hover:opacity-75"
                     }`}
                   >
-                    <div className="p-6 sm:p-7 flex flex-col justify-between h-full space-y-4">
+                    <div className="p-5 sm:p-6 flex flex-col justify-between h-full space-y-3">
                       {/* Top Card Badge & Meta */}
-                      <div className="flex items-center justify-between pb-3 border-b border-[var(--color-border)]">
+                      <div className="flex items-center justify-between pb-2.5 border-b border-[var(--color-border)]">
                         <div className="flex items-center gap-2">
                           <span
                             className={`w-2 h-2 rounded-full ${
@@ -160,66 +158,65 @@ export function TrajectoryCoverflow() {
                           <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--color-primary)]">
                             {item.title}
                           </h3>
-                          {item.url && (
-                            <a
-                              href={item.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={(e) => e.stopPropagation()}
-                              className="p-1.5 rounded-lg border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors"
-                              title="Open project URL"
-                            >
-                              <ArrowUpRight className="w-4 h-4" />
-                            </a>
-                          )}
-                        </div>
-                        <p className="text-xs sm:text-sm text-[var(--color-secondary)] font-mono-code mt-1 font-medium">
-                          {item.role}
-                        </p>
-                      </div>
-
-                      {/* Problem Statement Box */}
-                      <div className="rounded-xl p-3 bg-[var(--color-background)] border border-[var(--color-border)] text-xs font-mono-code space-y-1">
-                        <span className="text-[10px] uppercase font-bold text-[var(--color-secondary)] tracking-wider block">
-                          PROBLEM STATEMENT & ARCHITECTURE
-                        </span>
-                        <p className="text-[var(--color-primary)] font-medium">
-                          {item.problemStatement}
-                        </p>
-                      </div>
-
-                      {/* Detailed Description */}
-                      <div className="text-xs sm:text-sm text-[var(--color-secondary)] space-y-1.5 font-normal leading-relaxed">
-                        {item.description.map((desc, dIdx) => (
-                          <p key={dIdx} className="line-clamp-3">
-                            {desc}
-                          </p>
-                        ))}
-                      </div>
-
-                      {/* Bottom Footer Details */}
-                      <div className="pt-3 border-t border-[var(--color-border)] flex items-center justify-between text-xs font-mono-code">
-                        <div className="flex items-center gap-2 text-[var(--color-secondary)]">
-                          <Terminal className="w-3.5 h-3.5 text-[var(--color-accent)]" />
-                          <span>Interactive Trajectory Node</span>
-                        </div>
-
-                        {item.url ? (
+                          {item.isCaseStudyAvailable && item.caseStudyUrl ? (
                           <a
-                            href={item.url}
+                            href={item.caseStudyUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
                             className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--color-accent)] hover:underline"
                           >
-                            Explore Artifact <ExternalLink className="w-3 h-3" />
+                            Case Study <ExternalLink className="w-3 h-3" />
                           </a>
                         ) : (
                           <span className="text-[11px] text-[var(--color-secondary)]">
-                            Internal Architecture
+                            No Case Study Available
                           </span>
                         )}
+                        </div>
+                        <p className="text-xs text-[var(--color-secondary)] font-mono-code mt-0.5 font-medium">
+                          {item.role}
+                        </p>
                       </div>
+
+                      {/* Problem Statement Box */}
+                      <div className="rounded-xl p-2.5 sm:p-3 bg-[var(--color-background)] border border-[var(--color-border)] text-xs font-mono-code space-y-1">
+                        <span className="text-[10px] uppercase font-bold text-[var(--color-secondary)] tracking-wider block">
+                          PROBLEM STATEMENT
+                        </span>
+                        <p className="text-[var(--color-primary)] font-small">
+                          {item.problemStatement}
+                        </p>
+                      </div>
+
+                      {/* Detailed Description */}
+                      <div className="text-xs sm:text-sm text-[var(--color-secondary)] space-y-1 font-normal leading-relaxed">
+                        {item.description.map((desc, dIdx) => (
+                          <p key={dIdx} className="line-clamp-2">
+                            {desc}
+                          </p>
+                        ))}
+                      </div>
+
+                      {/* Tags / Highlights Matrix */}
+                      {item.highlights && item.highlights.length > 0 ? (
+                        <div className="grid grid-cols-2 gap-1.5 w-full pt-0.5">
+                          {item.highlights.slice(0, 4).map((tag, tIdx) => (
+                            <div
+                              key={tIdx}
+                              title={tag}
+                              className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-[var(--color-border)] bg-[var(--color-background)] text-[11px] font-mono-code text-[var(--color-secondary)] hover:text-[var(--color-primary)] hover:border-[var(--color-accent)]/50 transition-colors overflow-hidden"
+                            >
+                              <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] shrink-0 opacity-75" />
+                              <span className="truncate">{tag}</span>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="text-xs text-[var(--color-secondary)] line-clamp-2 font-normal leading-relaxed">
+                          {item.description[0]}
+                        </div>
+                      )}
                     </div>
                   </motion.div>
                 );
@@ -228,7 +225,7 @@ export function TrajectoryCoverflow() {
           </div>
 
           {/* Controls Bar: Prev / Next + Timer Indicator + Dots */}
-          <div className="w-full max-w-xl flex items-center justify-between pt-8 px-4 z-40">
+          <div className="w-full max-w-xl flex items-center justify-between pt-6 sm:pt-8 px-4 z-40">
             {/* Prev Button */}
             <button
               onClick={handlePrev}
