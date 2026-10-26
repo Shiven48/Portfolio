@@ -148,3 +148,23 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-secondary);
 }
+
+/* Stacked Deck animations */
+@keyframes stackedDeckFill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stacked-card {
+    transition: none !important;
+  }
+  .stacked-bar-fill {
+    animation: none !important;
+    transform: scaleX(1) !important;
+  }
+}
