@@ -63,7 +63,7 @@
         "url": "https://silentguard.ai",
         "caseStudyUrl": "/writings/silentguard",
         "highlights": ["300ms Latency", "Local First", "500+ supported Platforms", "10+ supported Doc Types"],
-        "isCaseStudyAvailable": false
+        "isCaseStudyAvailable": true
       },
       {
         "id": 2,
