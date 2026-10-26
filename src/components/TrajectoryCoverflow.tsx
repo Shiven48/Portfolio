@@ -256,11 +256,11 @@ export function TrajectoryCoverflow() {
                     </div>
 
                     {/* Problem Statement Box */}
-                    <div className="rounded-xl p-2.5 bg-[var(--color-background)] border border-[var(--color-border)] text-xs font-mono-code space-y-1">
-                      <span className="text-[10px] uppercase font-bold text-[var(--color-secondary)] tracking-wider block">
-                        PROBLEM STATEMENT
+                    <div className="p-3 rounded-lg bg-amber-500/10 border-l-2 border-l-amber-500 border-y border-r border-amber-500/20 text-xs font-mono-code leading-relaxed">
+                      <span className="font-semibold text-amber-500 tracking-wider uppercase text-[10px] block mb-1">
+                        PROBLEM
                       </span>
-                      <p className="text-[var(--color-primary)] text-xs leading-relaxed">
+                      <p className="text-xs leading-relaxed">
                         {item.problemStatement}
                       </p>
                     </div>
