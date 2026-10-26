@@ -43,11 +43,11 @@ const Herobody = () => {
               PLACEHOLDER.
             </p>
 
-            {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            {/* Action Buttons (1+2 Split on smaller screens, inline flex on sm+) */}
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2.5 sm:gap-4 pt-2 w-full sm:w-auto">
               <a
                 href="#trajectory"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold btn-cta shadow-md hover:shadow-lg transition-all"
+                className="col-span-2 w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-xl sm:rounded-full text-sm font-semibold btn-cta shadow-md hover:shadow-lg active:scale-[0.98] transition-all min-h-[46px]"
               >
                 <span>View the work</span>
                 <ArrowRight className="w-4 h-4" />
@@ -55,18 +55,20 @@ const Herobody = () => {
 
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold btn-outline-custom shadow-sm transition-all"
+                className="col-span-1 inline-flex items-center justify-center gap-2 px-3 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-full text-xs sm:text-sm font-semibold btn-outline-custom shadow-xs sm:shadow-sm active:scale-[0.98] transition-all min-h-[44px] sm:min-h-0"
               >
-                <Mail className="w-4 h-4 text-[var(--color-secondary)]" />
-                <span>Get in touch</span>
+                <Mail className="w-4 h-4 text-[var(--color-secondary)] shrink-0" />
+                <span className="truncate">Get in touch</span>
               </a>
 
               <a
                 href="https://sg-res.tiiny.site"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold btn-outline-custom shadow-sm transition-all"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="col-span-1 inline-flex items-center justify-center gap-2 px-3 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-full text-xs sm:text-sm font-semibold btn-outline-custom shadow-xs sm:shadow-sm active:scale-[0.98] transition-all min-h-[44px] sm:min-h-0"
               >
-                <Book className="w-4 h-4 text-[var(--color-secondary)]" />
-                <span>Resume</span>
+                <Book className="w-4 h-4 text-[var(--color-secondary)] shrink-0" />
+                <span className="truncate">Resume</span>
               </a>
             </div>
           </motion.div>
