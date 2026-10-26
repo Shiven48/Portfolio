@@ -27,20 +27,20 @@ const Herobody = () => {
             </div>
 
             {/* Main Headline with Accent Underline */}
-            <h1 className="text-3xl sm:text-3xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-[var(--color-primary)] leading-[1.15]">
-              PLACEHOLDER{" "}
+            <h1 className="text-3xl sm:text-3xl md:text-5xl lg:text-[2.50rem] font-bold tracking-tight text-[var(--color-primary)] leading-[1.15]">
+              I build production AI systems{" "}
               <span className="relative inline-block whitespace-nowrap">
                 <span className="relative z-10 text-[var(--color-primary)]">
-                  PLACEHOLDER
+                  on top of the edge sockets
                 </span>
                 <span className="absolute bottom-1 left-0 w-full h-[6px] bg-[var(--color-accent)]/35 -z-0 rounded-full" />
               </span>{" "}
-              PLACEHOLDER
+              and clinical hardware.
             </h1>
 
             {/* Description / Bio Text */}
             <p className="text-base sm:text-lg text-[var(--color-secondary)] font-normal max-w-xl leading-relaxed">
-              PLACEHOLDER.
+              Founding AI Engineer specializing in zero-telemetry LLM security, high-throughput protocol engines, and local-first architecture.
             </p>
 
             {/* Action Buttons (1+2 Split on smaller screens, inline flex on sm+) */}
