@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import projectData from "@/../data/data.json";
 import {
   ChevronLeft,
   ChevronRight,
   ExternalLink,
-  ArrowUpRight,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { AssetMeta, getHomePageAssets, getProjects, Project } from "@/lib/utils";
@@ -14,26 +13,118 @@ import { AssetMeta, getHomePageAssets, getProjects, Project } from "@/lib/utils"
 export function TrajectoryCoverflow() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [exitingIndex, setExitingIndex] = useState<number | null>(null);
+  const [animKey, setAnimKey] = useState(0);
+  const isLocked = useRef(false);
+  const touchStartX = useRef<number | null>(null);
+
   const filteredProjects: Project[] = getProjects(); 
-  const homeAssets:AssetMeta[] = getHomePageAssets();
+  const homeAssets: AssetMeta[] = getHomePageAssets();
+
+  const handleNext = useCallback(() => {
+    if (isLocked.current || filteredProjects.length <= 1) return;
+    isLocked.current = true;
+    const prev = activeIndex;
+    const next = (prev + 1) % filteredProjects.length;
+
+    setExitingIndex(prev);
+    setActiveIndex(next);
+    setAnimKey((k) => k + 1);
+
+    setTimeout(() => {
+      setExitingIndex(null);
+      isLocked.current = false;
+    }, 600);
+  }, [activeIndex, filteredProjects.length]);
+
+  const handlePrev = useCallback(() => {
+    if (isLocked.current || filteredProjects.length <= 1) return;
+    setExitingIndex(null);
+    setActiveIndex((prev) =>
+      prev === 0 ? filteredProjects.length - 1 : prev - 1
+    );
+    setAnimKey((k) => k + 1);
+  }, [filteredProjects.length]);
+
+  const handleJump = useCallback(
+    (index: number) => {
+      if (isLocked.current || index === activeIndex) return;
+      setExitingIndex(null);
+      setActiveIndex(index);
+      setAnimKey((k) => k + 1);
+    },
+    [activeIndex]
+  );
 
   // 5.0s auto rotation timer
   useEffect(() => {
     if (isPaused || filteredProjects.length <= 1) return;
     const timer = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % filteredProjects.length);
+      handleNext();
     }, 5000);
     return () => clearInterval(timer);
-  }, [isPaused, filteredProjects.length]);
+  }, [isPaused, filteredProjects.length, handleNext]);
 
-  const handlePrev = () => {
-    setActiveIndex((prev) =>
-      prev === 0 ? filteredProjects.length - 1 : prev - 1
-    );
-  };
+  // Pause when the tab is hidden
+  useEffect(() => {
+    const handleVisibility = () => {
+      if (document.hidden) {
+        setIsPaused(true);
+      } else {
+        setIsPaused(false);
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
+    return () => document.removeEventListener("visibilitychange", handleVisibility);
+  }, []);
 
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % filteredProjects.length);
+  const getStackedCardStyle = (state: string): React.CSSProperties => {
+    const base: React.CSSProperties = {
+      gridArea: "1 / 1",
+      transformOrigin: "50% 100%",
+      transition:
+        "transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)",
+    };
+
+    switch (state) {
+      case "active":
+        return {
+          ...base,
+          transform: "none",
+          opacity: 1,
+          zIndex: 4,
+          boxShadow: "0 20px 40px -20px rgba(0, 0, 0, 0.45)",
+        };
+      case "n1":
+        return {
+          ...base,
+          transform: "translateY(14px) scale(0.95)",
+          opacity: 0.6,
+          zIndex: 3,
+        };
+      case "n2":
+        return {
+          ...base,
+          transform: "translateY(28px) scale(0.9)",
+          opacity: 0.3,
+          zIndex: 2,
+        };
+      case "exit":
+        return {
+          ...base,
+          transform: "translateX(-115%) rotate(-6deg)",
+          opacity: 0,
+          zIndex: 5,
+        };
+      case "hidden":
+      default:
+        return {
+          ...base,
+          transform: "translateY(40px) scale(0.85)",
+          opacity: 0,
+          zIndex: 1,
+        };
+    }
   };
 
   return (
@@ -55,33 +146,222 @@ export function TrajectoryCoverflow() {
               Production engineering, applied machine learning, and core systems.
             </p>
           </div>
-
-          {/* Filter / Filter Pills */}
-          {/* <div className="flex items-center gap-1.5 p-1 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] self-start sm:self-auto">
-            {(["all", "experience", "personal"] as const).map((mode) => (
-              <button
-                key={mode}
-                onClick={() => {
-                  setFilter(mode);
-                  setActiveIndex(0);
-                }}
-                className={`px-3 py-1 rounded-full text-xs font-mono-code transition-all capitalize ${
-                  filter === mode
-                    ? "bg-[var(--color-cta)] text-[var(--color-cta-text)] font-semibold shadow-sm"
-                    : "text-[var(--color-secondary)] hover:text-[var(--color-primary)]"
-                }`}
-              >
-                {mode === "all" ? "All Systems" : mode}
-              </button>
-            ))}
-          </div> */}
         </div>
 
-        {/* 3D Coverflow Carousel Stage */}
+        {/* Stacked Deck Design (Small devices & Mobile / < sm breakpoint) */}
+        <div
+          onPointerEnter={() => setIsPaused(true)}
+          onPointerLeave={() => setIsPaused(false)}
+          onPointerDown={(e) => {
+            touchStartX.current = e.clientX;
+          }}
+          onPointerUp={(e) => {
+            if (touchStartX.current === null) return;
+            const dx = e.clientX - touchStartX.current;
+            touchStartX.current = null;
+            if (Math.abs(dx) > 40) {
+              if (dx < 0) {
+                handleNext();
+              } else {
+                handlePrev();
+              }
+            }
+          }}
+          onPointerCancel={() => {
+            touchStartX.current = null;
+          }}
+          className="block sm:hidden w-full max-w-[440px] mx-auto py-4 select-none touch-pan-y"
+          aria-roledescription="carousel"
+          aria-label="Projects Deck"
+        >
+          {/* Stacked Cards Container: All cards share 1 grid cell */}
+          <div className="grid grid-cols-1 pb-7 overflow-hidden">
+            {filteredProjects.map((item, index) => {
+              const total = filteredProjects.length;
+              let state = "hidden";
+              if (index === exitingIndex) {
+                state = "exit";
+              } else {
+                const offset = (index - activeIndex + total) % total;
+                state = ["active", "n1", "n2"][offset] || "hidden";
+              }
+              const isActive = state === "active";
+
+              return (
+                <article
+                  key={item.id}
+                  style={getStackedCardStyle(state)}
+                  aria-hidden={!isActive}
+                  className={`stacked-card col-start-1 row-start-1 p-5 rounded-[18px] border transition-shadow duration-300 ${
+                    isActive
+                      ? "surface-card border-[var(--color-accent)] pointer-events-auto"
+                      : "surface-card border-[var(--color-border)] pointer-events-none"
+                  }`}
+                >
+                  <div className="flex flex-col justify-between h-full space-y-3">
+                    {/* Top Card Badge & Meta */}
+                    <div className="flex items-center justify-between pb-2.5 border-b border-[var(--color-border)]">
+                      <div className="flex items-center gap-2">
+                        <span
+                          className={`w-2 h-2 rounded-full ${
+                            isActive
+                              ? "bg-[var(--color-accent)] animate-pulse"
+                              : "bg-[var(--color-secondary)]"
+                          }`}
+                        />
+                        <span className="text-xs font-mono-code font-bold uppercase tracking-wider text-[var(--color-accent)]">
+                          {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        {item.isAccessibleByUrl && (
+                          <span className="text-[10px] font-mono-code px-2 py-0.5 rounded-full border border-emerald-500/40 text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 font-medium">
+                            LIVE
+                          </span>
+                        )}
+                        <span className="text-[11px] font-mono-code text-[var(--color-secondary)]">
+                          {projectData.projectMeta.ExperienceSection.includes(item.id)
+                            ? "Industry"
+                            : "Project"}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Main Title & Role */}
+                    <div>
+                      <div className="flex items-center justify-between gap-2">
+                        <h3 className="text-xl font-bold tracking-tight text-[var(--color-primary)]">
+                          {item.title}
+                        </h3>
+                        {item.isCaseStudyAvailable && item.caseStudyUrl ? (
+                          <a
+                            href={item.caseStudyUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--color-accent)] hover:underline shrink-0"
+                          >
+                            Case Study <ExternalLink className="w-3 h-3" />
+                          </a>
+                        ) : (
+                          <span className="text-[11px] text-[var(--color-secondary)] shrink-0">
+                            No Case Study Available
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs text-[var(--color-secondary)] font-mono-code mt-0.5 font-medium">
+                        {item.role}
+                      </p>
+                    </div>
+
+                    {/* Problem Statement Box */}
+                    <div className="rounded-xl p-2.5 bg-[var(--color-background)] border border-[var(--color-border)] text-xs font-mono-code space-y-1">
+                      <span className="text-[10px] uppercase font-bold text-[var(--color-secondary)] tracking-wider block">
+                        PROBLEM STATEMENT
+                      </span>
+                      <p className="text-[var(--color-primary)] text-xs leading-relaxed">
+                        {item.problemStatement}
+                      </p>
+                    </div>
+
+                    {/* Detailed Description */}
+                    <div className="text-xs text-[var(--color-secondary)] space-y-1 font-normal leading-relaxed">
+                      {item.description.map((desc, dIdx) => (
+                        <p key={dIdx} className="line-clamp-2">
+                          {desc}
+                        </p>
+                      ))}
+                    </div>
+
+                    {/* Tags / Highlights Chips */}
+                    {item.highlights && item.highlights.length > 0 ? (
+                      <div className="flex flex-wrap gap-1.5 pt-0.5">
+                        {item.highlights.slice(0, 4).map((tag, tIdx) => (
+                          <div
+                            key={tIdx}
+                            title={tag}
+                            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-[var(--color-border)] bg-[var(--color-background)] text-[11px] font-mono-code text-[var(--color-secondary)]"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] shrink-0 opacity-75" />
+                            <span className="truncate max-w-[140px]">{tag}</span>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="text-xs text-[var(--color-secondary)] line-clamp-2 font-normal leading-relaxed">
+                        {item.description[0]}
+                      </div>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+
+          {/* Controls Bar: Prev / Bars / Next */}
+          <div className="flex items-center gap-3 mt-3 px-1">
+            <button
+              type="button"
+              onClick={handlePrev}
+              aria-label="Previous project"
+              className="w-10 h-10 shrink-0 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-primary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] flex items-center justify-center transition-all shadow-xs active:scale-95"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+
+            <div
+              className="flex-1 grid gap-2"
+              style={{
+                gridTemplateColumns: `repeat(${filteredProjects.length}, minmax(0, 1fr))`,
+              }}
+            >
+              {filteredProjects.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => handleJump(i)}
+                  aria-label={`Show project ${i + 1}`}
+                  className="relative h-1 w-full rounded-full bg-[var(--color-border)] overflow-hidden cursor-pointer p-0 border-0 outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+                >
+                  {i === activeIndex && (
+                    <span
+                      key={`stacked-fill-${i}-${animKey}`}
+                      className="stacked-bar-fill absolute inset-0 bg-[var(--color-accent)] origin-left"
+                      style={{
+                        animation: "stackedDeckFill 5s linear forwards",
+                        animationPlayState: isPaused ? "paused" : "running",
+                      }}
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
+
+            <button
+              type="button"
+              onClick={handleNext}
+              aria-label="Next project"
+              className="w-10 h-10 shrink-0 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-primary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] flex items-center justify-center transition-all shadow-xs active:scale-95"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Status caption */}
+          <div className="flex justify-between items-center text-[10px] font-mono-code text-[var(--color-secondary)] mt-2 px-1">
+            <span>{isPaused ? "PAUSED (HOVER/TOUCH)" : "AUTOPLAY · 5.0s"}</span>
+            <span>
+              {activeIndex + 1} / {filteredProjects.length}
+            </span>
+          </div>
+        </div>
+
+        {/* 3D Coverflow Carousel Stage (Large screens >= sm) */}
         <div
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
-          className="relative py-6 sm:py-8 min-h-[520px] sm:min-h-[550px] flex flex-col justify-center items-center overflow-hidden"
+          className="hidden sm:flex relative py-6 sm:py-8 min-h-[520px] sm:min-h-[550px] flex-col justify-center items-center overflow-hidden"
         >
           {/* Coverflow Cards Container */}
           <div className="w-full flex items-center justify-center relative perspective-[1200px]">
@@ -241,7 +521,7 @@ export function TrajectoryCoverflow() {
                 {filteredProjects.map((_, i) => (
                   <button
                     key={i}
-                    onClick={() => setActiveIndex(i)}
+                    onClick={() => handleJump(i)}
                     aria-label={`Go to slide ${i + 1}`}
                     className={`h-2 rounded-full transition-all duration-300 ${
                       activeIndex === i
