@@ -15,7 +15,7 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen flex flex-col justify-between selection:bg-[var(--color-accent)] selection:text-white">
       <Navbar />
-      <div className="max-w-[70%] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-6 flex-1 w-full">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-6 flex-1 w-full">
         <AboutProfileCard />
 
         <div className="flex flex-col lg:flex-row gap-6 items-start mx-auto">
