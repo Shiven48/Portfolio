@@ -123,7 +123,7 @@ const Navbar = () => {
                 href={soc.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs font-mono-code text-[var(--color-secondary)] hover:text-[var(--color-primary)] flex items-center gap-1"
+                className="text-xs font-mono-code text-[var(--color-secondary)] hover:text-[var(--color-accent)] flex items-center gap-1"
               >
                 {soc.platform} <ArrowUpRight className="w-3 h-3" />
               </a>
