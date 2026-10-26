@@ -8,7 +8,7 @@ import projectData from "@/../data/data.json";
 
 const Herobody = () => {
   return (
-    <section id="home" className="w-full pt-10 pb-16 md:pt-16 md:pb-24">
+    <section id="home" className="w-full pt-10 pb-16 md:pt-16 md:pb-24 h-full">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Hero Text & CTAs */}
