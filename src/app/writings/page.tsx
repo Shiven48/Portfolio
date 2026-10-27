@@ -16,6 +16,7 @@ import { Blogs, getAllBlogs, getCaseStudies, Project } from "@/lib/utils";
 export default function WritingsPage() {
   const caseStudies: Project[] = getCaseStudies();
   const allBlogs: Blogs[] = getAllBlogs();
+  const isBlogsPresent = allBlogs && allBlogs.length > 0 ? true : false;
 
   // Stacked deck state for mobile / small screens (< sm)
   const [activeIndex, setActiveIndex] = useState(0);
@@ -187,7 +188,8 @@ export default function WritingsPage() {
           </div>
         </header>
 
-        <section aria-labelledby="case-studies-heading" className="mb-16 md:mb-20">
+        {/* Case Study Section */}
+        <section aria-labelledby="case-studies-heading">
           {/* Section Heading without buttons */}
           <div className="pb-6 mb-8 border-b border-[var(--color-border)]">
             <div className="flex items-center gap-2 mb-2">
@@ -441,16 +443,18 @@ export default function WritingsPage() {
                             : study.description}
                         </p>
 
-                        {/* Highlights: 2x2 Structured Grid (Max 4 tags) */}
+                        {/* Highlights: 2x2 grid of chips (max 4) */}
                         {study.highlights && study.highlights.length > 0 && (
                           <div className="grid grid-cols-2 gap-2 pt-1">
                             {study.highlights.slice(0, 4).map((highlight, idx) => (
-                              <span
+                              <div
                                 key={idx}
-                                className="flex items-center justify-center gap-2 text-[11px] font-mono-code font-medium py-1.5 px-2 rounded-lg bg-[var(--color-surface)] border border-[var(--color-border)] text-center group-hover:border-[var(--color-accent)]/40 transition-colors truncate"
+                                title={highlight}
+                                className="flex items-center gap-2 min-w-0 px-2.5 py-1.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-background)] text-[10px] sm:text-[11px] font-mono-code font-medium text-[var(--color-secondary)] group-hover:border-[var(--color-accent)]/40 transition-colors"
                               >
-                                {highlight}
-                              </span>
+                                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] opacity-75 shrink-0" />
+                                <span className="truncate text-xs">{highlight}</span>
+                              </div>
                             ))}
                           </div>
                         )}
@@ -463,81 +467,80 @@ export default function WritingsPage() {
           </div>
         </section>
 
-        {/* =========================================================================
-            SECTION 2: BLOGS (3xN Grid, Vertically Scrollable)
-            - 3-column responsive grid (3xN)
-            - Clean editorial cards matching homepage style
-           ========================================================================= */}
-        <section aria-labelledby="blogs-heading" className="pt-8 border-t border-[var(--color-border)]">
-          <div className="pb-6 mb-8 border-b border-[var(--color-border)]">
-            <div className="flex items-center gap-2 mb-2">
-              <span className="w-2 h-2 rounded-full bg-[var(--color-accent)]" />
-              <span className="text-xs font-mono-code font-bold tracking-widest text-[var(--color-accent)] uppercase">
-                PUBLICATIONS & ESSAYS
-              </span>
-            </div>
-            <h2
-              id="blogs-heading"
-              className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--color-primary)]"
-            >
-              Articles & Publications
-            </h2>
-            <p className="text-xs sm:text-sm text-[var(--color-secondary)] font-mono-code mt-1">
-              Deep dives into systems programming, machine learning, and software design.
-            </p>
-          </div>
+        {/* Blogs section */}
+        {isBlogsPresent ? 
+            <section aria-labelledby="blogs-heading" className="pt-8 border-t border-[var(--color-border)]">
+              <div className="pb-6 mb-8 border-b border-[var(--color-border)]">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="w-2 h-2 rounded-full bg-[var(--color-accent)]" />
+                  <span className="text-xs font-mono-code font-bold tracking-widest text-[var(--color-accent)] uppercase">
+                    PUBLICATIONS & ESSAYS
+                  </span>
+                </div>
+                <h2
+                  id="blogs-heading"
+                  className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--color-primary)]"
+                >
+                  Articles & Publications
+                </h2>
+                <p className="text-xs sm:text-sm text-[var(--color-secondary)] font-mono-code mt-1">
+                  Deep dives into systems programming, machine learning, and software design.
+                </p>
+              </div>
 
-          {/* 3xN Responsive Grid for Blogs */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {allBlogs.map((post, idx) => (
-              <div
-                key={idx}
-                className="surface-card rounded-2xl p-6 flex flex-col justify-between space-y-4 hover:border-[var(--color-accent)] transition-all duration-200 group hover:-translate-y-1"
-              >
-                <div className="space-y-3">
-                  {/* Top Tag & Meta */}
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-mono-code font-semibold px-2.5 py-0.5 rounded-full border border-[var(--color-accent)] text-[var(--color-accent)] bg-[var(--color-accent)]/5">
-                      {post.tag || "Article"}
-                    </span>
-                    <div className="flex items-center gap-2 text-[10px] font-mono-code text-[var(--color-secondary)]">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" /> {post.date || "2026"}
-                      </span>
-                      <span>·</span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3 h-3" /> {post.readTime || "5m"}
-                      </span>
+              {/* 3xN Responsive Grid for Blogs */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {allBlogs.map((post, idx) => (
+                  <div
+                    key={idx}
+                    className="surface-card rounded-2xl p-6 flex flex-col justify-between space-y-4 hover:border-[var(--color-accent)] transition-all duration-200 group hover:-translate-y-1"
+                  >
+                    <div className="space-y-3">
+                      {/* Top Tag & Meta */}
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-mono-code font-semibold px-2.5 py-0.5 rounded-full border border-[var(--color-accent)] text-[var(--color-accent)] bg-[var(--color-accent)]/5">
+                          {post.tag || "Article"}
+                        </span>
+                        <div className="flex items-center gap-2 text-[10px] font-mono-code text-[var(--color-secondary)]">
+                          <span className="flex items-center gap-1">
+                            <Calendar className="w-3 h-3" /> {post.date || "2026"}
+                          </span>
+                          <span>·</span>
+                          <span className="flex items-center gap-1">
+                            <Clock className="w-3 h-3" /> {post.readTime || "5m"}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Post Title */}
+                      <h3 className="text-lg font-bold tracking-tight text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors leading-snug line-clamp-2">
+                        {post.title}
+                      </h3>
+
+                      {/* Post Description */}
+                      <p className="text-xs sm:text-sm text-[var(--color-secondary)] leading-relaxed line-clamp-3">
+                        {post.description}
+                      </p>
+                    </div>
+
+                    {/* Bottom Card Action */}
+                    <div className="pt-3 border-t border-[var(--color-border)] flex items-center justify-between text-xs font-mono-code">
+                      <span className="text-[var(--color-secondary)]">Read post</span>
+                      <a
+                        href={post.url || "#"}
+                        className="inline-flex items-center gap-1 text-[var(--color-primary)] group-hover:text-[var(--color-accent)] font-semibold transition-colors"
+                      >
+                        View <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      </a>
                     </div>
                   </div>
-
-                  {/* Post Title */}
-                  <h3 className="text-lg font-bold tracking-tight text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors leading-snug line-clamp-2">
-                    {post.title}
-                  </h3>
-
-                  {/* Post Description */}
-                  <p className="text-xs sm:text-sm text-[var(--color-secondary)] leading-relaxed line-clamp-3">
-                    {post.description}
-                  </p>
-                </div>
-
-                {/* Bottom Card Action */}
-                <div className="pt-3 border-t border-[var(--color-border)] flex items-center justify-between text-xs font-mono-code">
-                  <span className="text-[var(--color-secondary)]">Read post</span>
-                  <a
-                    href={post.url || "#"}
-                    className="inline-flex items-center gap-1 text-[var(--color-primary)] group-hover:text-[var(--color-accent)] font-semibold transition-colors"
-                  >
-                    View <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </a>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </section>
+            </section>
+          : 
+            <></>
+        }
       </div>
-
       <ContactSection />
     </main>
   );
