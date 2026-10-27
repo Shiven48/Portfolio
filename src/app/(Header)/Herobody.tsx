@@ -7,8 +7,9 @@ import { HeroRotatingCard } from "@/components/HeroRotatingCard";
 
 const Herobody = () => {
   return (
-    <section id="home" className="w-full pt-10 pb-16 md:pt-16 md:pb-24 h-full">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    // w-full pt-16 pb-12 transition-colors
+    <section id="home" className="w-full pt-4 pb-6 md:pt-16 md:pb-24 h-full transition-colors">
+      <div className="max-w-6xl mx-auto px-2 sm:px-6 lg:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Hero Text & CTAs */}
           <motion.div

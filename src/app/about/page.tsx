@@ -1,48 +1,40 @@
 'use client';
 
-import React, { useState } from "react";
 import Navbar from "@/app/(Header)/Navbar";
 import { AboutProfileCard } from "@/components/AboutProfileCard";
 import { AboutExpertiseCard } from "@/components/AboutExpertiseCard";
 import { AboutExperienceCard } from "@/components/AboutExperienceCard";
 import { AboutAcademicCard } from "@/components/AboutAcademicCard";
-import { AboutSidebarCards } from "@/components/AboutSidebarCards";
 import { ContactSection } from "@/components/ContactSection";
+import { AboutPersonalProjectsCard } from "@/components/AboutPersonalProjectsCard";
 
 export default function AboutPage() {
-  const [isSidebarPresent] = useState<Boolean>(false);
-
   return (
     <main className="min-h-screen flex flex-col justify-between selection:bg-[var(--color-accent)] selection:text-white">
       <Navbar />
-      <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-6 flex-1 w-full">
+
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-6 flex-1 w-full max-w-7xl">
+        {/* Profile: full width */}
         <AboutProfileCard />
 
-        <div className="flex flex-col lg:flex-row gap-6 items-start mx-auto">
-          {isSidebarPresent ?
-          <>
-            <div className={`w-full ${isSidebarPresent ? 'lg:w-[60%]' : 'lg:w-full'} space-y-6`}>   
-              <AboutExpertiseCard />
-              <AboutAcademicCard />
-              <AboutExperienceCard />
-              {/* <AboutPersonalProjectsCard /> */}
-            </div>
-            </>
-          :<>
-            <div className={`w-full ${isSidebarPresent ? 'lg:w-[60%]' : 'lg:w-full'} space-y-6`}>   
-              <AboutExpertiseCard />
-              <AboutAcademicCard />
-              {/* <AboutPersonalProjectsCard /> */}
-            </div>
-              <AboutExperienceCard />
-          </>
-          }
+        {/* P1: Projects and Experience, equal height */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          <div className="min-w-0 flex flex-col lg:col-span-5">
+            <AboutPersonalProjectsCard />
+          </div>
+          <div className="min-w-0 flex flex-col lg:col-span-7">
+            <AboutExperienceCard />
+          </div>
+        </div>
 
-          {isSidebarPresent ? (
-            <div className="w-full lg:w-[45%] space-y-6 lg:sticky lg:top-20">
-              <AboutSidebarCards />
-            </div>
-          ) : null}
+        {/* P2: Skills, full width */}
+        <div className="min-w-0 w-full">
+          <AboutExpertiseCard />
+        </div>
+
+        {/* P3: Academic, full width */}
+        <div className="min-w-0 w-full">
+          <AboutAcademicCard />
         </div>
       </div>
 
