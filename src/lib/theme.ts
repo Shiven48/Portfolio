@@ -1,7 +1,6 @@
 import palettesData from "@/../data/palettes.json";
 
 export type PaletteId =
-  | "mono-blue"
   | "dark-terminal"
 
 export interface PaletteColors {
@@ -23,7 +22,7 @@ export interface Palette {
 
 export const palettes: Palette[] = palettesData.palettes as Palette[];
 
-export function getPalette(id: string): Palette {
+export function getPalette(id: PaletteId): Palette {
   const found = palettes.find((p) => p.id === id);
   if (!found) {
     return palettes[0];

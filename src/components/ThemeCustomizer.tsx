@@ -23,7 +23,7 @@ export function ThemeCustomizer({
 }: {
   initialPalette?: PaletteId;
 }) {
-  const [activePalette, setActivePalette] = useState<PaletteId>(initialPalette);
+  const [activePalette, setActivePalette] = useState<PaletteId>("dark-terminal");
   const [activePattern, setActivePattern] = useState<PatternType>("grid");
   const [activeSkillPattern, setActiveSkillPattern] = useState<SkillPatternType>("default");
   const [isOpen, setIsOpen] = useState(false);
