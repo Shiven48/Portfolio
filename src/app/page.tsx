@@ -26,7 +26,7 @@ export default function Home() {
       <SectionSeperator />
 
       {/* Selected Writings / Blogs (Task 5: In place of selected work) */}
-      {projectData.blogs.length > 0 && (
+      {projectData.blogs && projectData.blogs?.length > 0 && (
         <BlogsSection />
       )}
       <SectionSeperator />
