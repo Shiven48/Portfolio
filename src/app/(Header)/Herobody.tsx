@@ -4,7 +4,6 @@ import React from "react";
 import { ArrowRight, Mail, Book } from "lucide-react";
 import { motion } from "framer-motion";
 import { HeroRotatingCard } from "@/components/HeroRotatingCard";
-import projectData from "@/../data/data.json";
 
 const Herobody = () => {
   return (
@@ -49,12 +48,12 @@ const Herobody = () => {
                 href="#trajectory"
                 className="col-span-2 w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-xl sm:rounded-full text-sm font-semibold btn-cta shadow-md hover:shadow-lg active:scale-[0.98] transition-all min-h-[46px]"
               >
-                <span>View the work</span>
+                <span>See My Experience</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
 
               <a
-                href="#contact"
+                href="/contact"
                 className="col-span-1 inline-flex items-center justify-center gap-2 px-3 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-full text-xs sm:text-sm font-semibold btn-outline-custom shadow-xs sm:shadow-sm active:scale-[0.98] transition-all min-h-[44px] sm:min-h-0"
               >
                 <Mail className="w-4 h-4 text-[var(--color-secondary)] shrink-0" />
