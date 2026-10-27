@@ -25,7 +25,7 @@ export function BlogsSection() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between pb-8 mb-8 border-b border-[var(--color-border)] gap-4">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="w-2 h-2 rounded-full bg-[var(--color-accent)]" />
+              <span className="w-2 h-2 rounded-2xl bg-[var(--color-accent)]" />
               <span className="text-xs font-mono-code font-bold tracking-widest text-[var(--color-accent)] uppercase">
                 PUBLICATIONS & WRITINGS
               </span>
@@ -41,13 +41,13 @@ export function BlogsSection() {
           {/* Action button */}
           <div className="flex items-center gap-3">
             {isDraftState && (
-              <span className="text-[11px] font-mono-code px-2.5 py-1 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-secondary)]">
+              <span className="text-[11px] font-mono-code px-2.5 py-1 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-secondary)]">
                 Drafts Pipeline
               </span>
             )}
             <a
               href="/writings"
-              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-mono-code font-medium border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-primary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all shadow-sm"
+              className="inline-flex items-center gap-1.5 p-2.5 rounded-xl w-full justify-center text-sm font-mono-code font-medium border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-primary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all shadow-sm"
             >
               <span>All writings</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -65,7 +65,7 @@ export function BlogsSection() {
               <div className="space-y-3">
                 {/* Top Badge & Date */}
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono-code font-semibold px-2.5 py-0.5 rounded-full border border-[var(--color-accent)] text-[var(--color-accent)] bg-[var(--color-accent)]/5">
+                  <span className="text-[10px] font-mono-code font-semibold px-2.5 py-0.5 rounded-2xl border border-[var(--color-accent)] text-[var(--color-accent)] bg-[var(--color-accent)]/5">
                     {post.tag || "Article"}
                   </span>
                   <div className="flex items-center gap-2 text-[10px] font-mono-code text-[var(--color-secondary)]">
