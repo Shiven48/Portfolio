@@ -378,6 +378,13 @@ export function TrajectoryCoverflow() {
               {activeIndex + 1} / {filteredProjects.length}
             </span>
           </div>
+
+          {/* Auto rotate note for the cards */}
+          <Note
+            title="Note"
+            description="Hover over the card to pause the rotation. Move away to resume it."
+            icon={Info}
+          />
         </div>
 
         {/* 3D Coverflow Carousel Stage (Large screens >= sm) */}
@@ -569,13 +576,6 @@ export function TrajectoryCoverflow() {
             </button>
           </div>
         </div>
-
-        {/* Auto rotate note for the cards */}
-        <Note
-          title="Note"
-          description="Hover over the card to pause the rotation. Move away to resume it."
-          icon={Info}
-        />
       </div>
     </section>
   );
