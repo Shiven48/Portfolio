@@ -63,7 +63,7 @@
         "url": "https://silentguard.ai",
         "caseStudyUrl": "/writings/silentguard",
         "highlights": ["300ms Latency", "Local First", "500+ supported Platforms", "10+ supported Doc Types"],
-        "isCaseStudyAvailable": true
+        "isCaseStudyAvailable": false
       },
       {
         "id": 2,
@@ -122,42 +122,6 @@
       }
   ],
   "blogs": [
-    {
-      "title": "Optimizing Custom CUDA Kernels for Low-Latency PyTorch Inference",
-      "description":
-        "Techniques for eliminating kernel launch overhead, memory coalescence, and async streaming in real-time edge workloads.",
-      "date": "Upcoming",
-      "readTime": "8 min read",
-      "tag": "CUDA · ML Systems",
-      "url": "#"
-    },
-    {
-      "title": "Architecting Resilient Real-Time Event Streams with Next.js & FastAPI",
-      "description":
-        "Building bidirectional WebSockets and SSE pipelines with distributed workers and minimal memory footprint.",
-      "date": "Upcoming",
-      "readTime": "6 min read",
-      "tag": "Web Architecture",
-      "url": "#"
-    },
-    {
-      "title": "Multi-Hop Knowledge Graphs & Vector Search for Multi-Modal RAG",
-      "description":
-        "Bridging structured entity graphs with dense vector embeddings for scalable contextual retrieval.",
-      "date": "Upcoming",
-      "readTime": "7 min read",
-      "tag": "Vector DB · RAG",
-      "url": "#"
-    },
-    {
-      "title": "Multi-Hop Knowledge Graphs & Vector Search for Multi-Modal RAG",
-      "description":
-        "Bridging structured entity graphs with dense vector embeddings for scalable contextual retrieval.",
-      "date": "Upcoming",
-      "readTime": "7 min read",
-      "tag": "Vector DB · RAG",
-      "url": "#"
-    }
   ],
   "navSections": ["Home", "About", "Writings", "Contact"],
   "assets": [
