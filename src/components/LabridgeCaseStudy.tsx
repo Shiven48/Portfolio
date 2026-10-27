@@ -7,6 +7,15 @@ import { loadAssets, AssetMeta } from "@/lib/utils";
 import { ArrowUpRight, X, Maximize2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+function Tag({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex items-center gap-2 min-w-0 h-full px-3 py-2 rounded-lg border border-[var(--color-border)] dark:border-[#262626] bg-[var(--color-surface)] dark:bg-[#141414] font-mono-code text-[11px] sm:text-xs leading-snug text-[var(--color-primary)] dark:text-[#d4d4d8] transition-colors hover:border-emerald-500/40">
+      <span className="w-1 h-1 rounded-full bg-[#3ecf8e] shrink-0" />
+      <span className="min-w-0 break-words">{children}</span>
+    </div>
+  );
+}
+
 export default function LabridgeCaseStudy() {
   const [assets, setAssets] = useState<AssetMeta[]>([]);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -28,11 +37,6 @@ export default function LabridgeCaseStudy() {
     id: 3,
     title: "Erba Elite 580 Hematology Analyzer",
     path: "/images/labridge/I-1.jpeg",
-  };
-  const assetI3 = getAsset("I-3") || {
-    id: 4,
-    title: "Network Diagnosis",
-    path: "/images/labridge/I-3.jpeg",
   };
   const assetI4 = getAsset("I-4") || {
     id: 5,
@@ -256,30 +260,6 @@ export default function LabridgeCaseStudy() {
 
             {/* Assets I-3 and I-4: Side-by-side on sm */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
-              <div>
-                <div
-                  onClick={() => setSelectedImage(assetI3.path)}
-                  className="group relative h-[220px] sm:h-[260px] border border-[var(--color-border)] rounded-lg bg-[var(--color-surface)] dark:bg-[#141414] overflow-hidden cursor-pointer shadow-sm hover:border-emerald-500/60 transition-all flex items-center justify-center"
-                >
-                  <Image
-                    src={assetI3.path}
-                    alt={assetI3.title}
-                    fill
-                    className="object-contain p-2 group-hover:scale-[1.02] transition-transform duration-300"
-                    sizes="(max-width: 768px) 100vw, 384px"
-                  />
-                  <div className="absolute top-2 right-2 p-1.5 rounded bg-black/60 text-white/80 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Maximize2 className="w-3.5 h-3.5" />
-                  </div>
-                  <div className="absolute inset-x-0 bottom-0 p-2 bg-gradient-to-t from-black/85 via-black/50 to-transparent text-[11px] text-zinc-200">
-                    {assetI3.title}
-                  </div>
-                </div>
-                <p className="text-[10px] text-[var(--color-secondary)] mt-1 text-center font-mono-code">
-                  Active TCP sockets &amp; connection states
-                </p>
-              </div>
-
               <div>
                 <div
                   onClick={() => setSelectedImage(assetI4.path)}
@@ -533,15 +513,9 @@ export default function LabridgeCaseStudy() {
             <p className="text-[11px] uppercase tracking-wider text-[var(--color-secondary)] font-semibold mb-3 font-mono-code">
               KEY HIGHLIGHTS
             </p>
-            <div className="flex flex-wrap items-center gap-2.5">
+            <div className="grid grid-cols-2 gap-2 items-stretch">
               {highlights.map((highlight, idx) => (
-                <div
-                  key={idx}
-                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[var(--color-border)] dark:border-[#262626] bg-[var(--color-surface)] dark:bg-[#141414] text-[12px] sm:text-[13px] font-mono-code text-[var(--color-primary)] dark:text-[#d4d4d8] shadow-sm hover:border-emerald-500/40 transition-colors"
-                >
-                  <span className="w-1 h-1 rounded-full bg-[#3ecf8e] shrink-0" />
-                  <span className="text-xs">{highlight}</span>
-                </div>
+                <Tag key={idx}>{highlight}</Tag>
               ))}
             </div>
           </section>
@@ -550,29 +524,24 @@ export default function LabridgeCaseStudy() {
 
         {/* Section: Tech Stack */}
         <section className="mt-8">
-          <p className="text-[11px] uppercase tracking-wider text-[var(--color-secondary)] font-semibold mb-2">
-            TECH STACK &amp; PROTOCOLS
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {[
-              "Python",
-              "ASTM (E1381/E1394)",
-              "HL7 v2",
-              "MLLP",
-              "SQLite (Encrypted)",
-              "YAML",
-              "TCP/IP Sockets",
-              "RS-232 Serial",
-            ].map((tech, idx) => (
-              <span
-                key={idx}
-                className="text-xs px-2.5 py-1 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-secondary)] hover:text-[var(--color-primary)] hover:border-emerald-500/40 transition-colors"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </section>
+        <p className="text-[11px] uppercase tracking-wider text-[var(--color-secondary)] font-semibold mb-3 font-mono-code">
+          TECH STACK &amp; PROTOCOLS
+        </p>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 items-stretch">
+          {[
+            "Python",
+            "ASTM (E1381/E1394)",
+            "HL7 v2",
+            "MLLP",
+            "SQLite (Encrypted)",
+            "YAML",
+            "TCP/IP Sockets",
+            "RS-232 Serial",
+          ].map((tech) => (
+            <Tag key={tech}>{tech}</Tag>
+          ))}
+        </div>
+      </section>
 
         {/* Deployment Note / Site Row */}
         <div className="mt-10 pt-6 border-t border-[var(--color-border)] flex items-center justify-between">
