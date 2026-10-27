@@ -38,9 +38,9 @@ export function AboutPersonalProjectsCard() {
                   <h3 className="text-sm sm:text-base font-bold text-[var(--color-primary)]">
                     {proj.title}
                   </h3>
-                  <span className="text-xs font-mono-code text-emerald-500 dark:text-emerald-400 font-semibold">
+                  {/* <span className="text-xs font-mono-code text-emerald-500 dark:text-emerald-400 font-semibold">
                     ({proj.role})
-                  </span>
+                  </span> */}
                 </div>
 
                 {proj.isAccessibleByUrl && proj.url && (
