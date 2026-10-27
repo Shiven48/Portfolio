@@ -29,7 +29,7 @@ export function ContactSection() {
           <div className="flex flex-wrap items-center gap-4">
             <a
               href={`/contact`}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-mono-code font-semibold btn-cta shadow-md hover:shadow-lg transition-all ml-2"
+              className="col-span-2 w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-xl sm:rounded-full text-sm font-semibold btn-cta shadow-md hover:shadow-lg active:scale-[0.98] transition-all min-h-[46px]"
             >
               <span>Say hello</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
