@@ -6,9 +6,32 @@ import {
   ChevronLeft,
   ChevronRight,
   ExternalLink,
+  Info
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { AssetMeta, getHomePageAssets, getProjects, Project } from "@/lib/utils";
+
+interface NoteProps {
+  title: string;
+  description: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
+
+const Note: React.FC<NoteProps> = ({ title, description, icon: Icon }) => {
+  return (
+    <div className="mt-4 flex items-start gap-3 rounded-xl border border-amber-500/20 bg-amber-500/10 px-4 py-3">
+      <Icon className="mt-0.5 h-4 w-4 shrink-0 text-amber-500" />
+      <div className="space-y-1">
+        <span className="block font-mono-code text-[10px] font-semibold uppercase tracking-wider text-amber-500">
+          {title}
+        </span>
+        <p className="font-mono-code text-xs leading-relaxed text-[var(--color-secondary)]">
+          {description}
+        </p>
+      </div>
+    </div>
+  );
+};
 
 export function TrajectoryCoverflow() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -276,20 +299,20 @@ export function TrajectoryCoverflow() {
 
                     {/* Tags / Highlights Chips */}
                     {item.highlights && item.highlights.length > 0 ? (
-                      <div className="flex flex-wrap gap-1.5 pt-0.5">
+                      <div className="grid grid-rows-2 grid-cols-2 gap-1.5 pt-0.5">
                         {item.highlights.slice(0, 4).map((tag, tIdx) => (
                           <div
                             key={tIdx}
                             title={tag}
-                            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-[var(--color-border)] bg-[var(--color-background)] text-[11px] font-mono-code text-[var(--color-secondary)]"
+                            className="flex items-center gap-1.5 min-w-0 px-2 py-1 rounded-md border border-[var(--color-border)] bg-[var(--color-background)] text-[10px] sm:text-[11px] font-mono-code text-[var(--color-secondary)]"
                           >
-                            <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] shrink-0 opacity-75" />
-                            <span className="truncate max-w-[140px]">{tag}</span>
+                            <span className="w-1 h-1 rounded-full bg-[var(--color-accent)] shrink-0 opacity-75" />
+                            <span className="truncate">{tag}</span>
                           </div>
                         ))}
                       </div>
                     ) : (
-                      <div className="text-xs text-[var(--color-secondary)] line-clamp-2 font-normal leading-relaxed">
+                      <div className="text-[11px] sm:text-xs text-[var(--color-secondary)] line-clamp-2 font-normal leading-relaxed">
                         {item.description[0]}
                       </div>
                     )}
@@ -546,6 +569,13 @@ export function TrajectoryCoverflow() {
             </button>
           </div>
         </div>
+
+        {/* Auto rotate note for the cards */}
+        <Note
+          title="Note"
+          description="Hover over the card to pause the rotation. Move away to resume it."
+          icon={Info}
+        />
       </div>
     </section>
   );
