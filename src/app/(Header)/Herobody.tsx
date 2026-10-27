@@ -19,12 +19,12 @@ const Herobody = () => {
             className="lg:col-span-7 flex flex-col justify-center space-y-6 text-left"
           >
             {/* Top Subtitle Badge */}
-            <div className="inline-flex items-center gap-2">
+            {/* <div className="inline-flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
               <span className="text-xs font-mono-code font-semibold tracking-wider text-[var(--color-accent)] uppercase">
                 {projectData.role} · Mumbai
               </span>
-            </div>
+            </div> */}
 
             {/* Main Headline with Accent Underline */}
             <h1 className="text-3xl sm:text-3xl md:text-5xl lg:text-[2.50rem] font-bold tracking-tight text-[var(--color-primary)] leading-[1.15]">

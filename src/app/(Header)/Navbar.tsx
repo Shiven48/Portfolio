@@ -55,7 +55,7 @@ const Navbar = () => {
               </span>
             </div>
             <span className="text-[11px] text-[var(--color-secondary)] font-mono-code leading-none">
-              Fullstack & ML Engineer · Mumbai, IN
+              {projectData.role} · {projectData.Academic.location}
             </span>
           </div>
         </Link>
