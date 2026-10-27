@@ -47,7 +47,7 @@ export function BlogsSection() {
             )}
             <a
               href="/writings"
-              className="inline-flex items-center gap-1.5 p-2.5 rounded-xl w-full justify-center text-sm font-mono-code font-medium border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-primary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all shadow-sm"
+              className="col-span-2 w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-xl sm:rounded-full text-sm font-semibold btn-cta shadow-md hover:shadow-lg active:scale-[0.98] transition-all min-h-[46px]"
             >
               <span>All writings</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -107,7 +107,7 @@ export function BlogsSection() {
         </div>
 
         {/* Empty notice helper when in draft state */}
-        {isDraftState && (
+        {/* {isDraftState && (
           <div className="mt-6 p-4 rounded-xl border border-dashed border-[var(--color-border)] bg-[var(--color-surface)]/50 text-center text-xs font-mono-code text-[var(--color-secondary)]">
             <span className="text-[var(--color-accent)] font-semibold">Note:</span> Blog entries can be added directly to{" "}
             <code className="px-1.5 py-0.5 rounded bg-[var(--color-border)] text-[var(--color-primary)]">
@@ -115,7 +115,7 @@ export function BlogsSection() {
             </code>{" "}
             and will automatically populate here.
           </div>
-        )}
+        )} */}
       </div>
     </section>
   );
