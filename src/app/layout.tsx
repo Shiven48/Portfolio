@@ -29,7 +29,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const activePalette = (process.env.NEXT_PUBLIC_PALETTE || "mono-blue") as PaletteId;
+  const activePalette = (process.env.NEXT_PUBLIC_PALETTE || "dark-terminal") as PaletteId;
   const palette = getPalette(activePalette);
   const cssVars = paletteToCssVars(palette.colors);
 
@@ -43,7 +43,6 @@ export default function RootLayout({
         <div className="relative z-10 flex min-h-screen flex-col">
           {children}
         </div>
-        <ThemeCustomizer initialPalette={activePalette} />
       </body>
     </html>
   );
