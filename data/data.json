@@ -103,7 +103,7 @@
         "isAccessibleByUrl": true,
         "url": "https://github.com/Shiven48/Astmio",
         "caseStudyUrl": null,
-        "highlights" : null,
+        "highlights" : ["protocol Engine for high throughput environment", "TLS/SSL security", "plugin architecture", "Configurable parsers"],
         "isCaseStudyAvailable": false
       },
       {
@@ -117,7 +117,7 @@
         "isAccessibleByUrl": true,
         "url": "https://linnked-out-beta.vercel.app/",
         "caseStudyUrl": null,
-        "highlights" :null,
+        "highlights" : ["semantic searching", "batching", "Algorithmic bias reduction", "content aggregation"],
         "isCaseStudyAvailable": false
       }
   ],
