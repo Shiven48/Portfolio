@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { PatternType } from "./ThemeCustomizer";
+
+type PatternType = "grid";
 
 export function BackgroundPattern() {
   const [pattern, setPattern] = useState<PatternType>("grid");
@@ -29,10 +30,8 @@ export function BackgroundPattern() {
     switch (pattern) {
       case "grid":
         return "pattern-grid";
-      case "blueprint":
-        return "pattern-blueprint";
       default:
-        return "pattern-blueprint";
+        return "pattern-grid";
     }
   };
 
