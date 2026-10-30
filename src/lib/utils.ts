@@ -58,51 +58,6 @@ export enum Priority {
   Personal = 'PersonalSection'
 }
 
-export const getSocials = (): Socials[] => {
-  return ProjectData.socials.map((social: Socials) => {
-    return {
-      platform: social.platform,
-      badge: social.badge,
-      url: social.url,
-      tagline: social.tagline,
-      signal: social.signal,
-      base: social.base,
-      details: social.details
-    }
-  })
-}
-
-export const getBlogs = (): Blogs[] => {
-  const blogs = [...ProjectData.blogs].slice(0, 3) as Blogs[];
-  return blogs;
-}
-
-export const getAllBlogs = (): Blogs[] => {
-  return [...ProjectData.blogs] as Blogs[];
-}
-
-export const getCaseStudies = (): Project[] => {
-  const caseStudies = [...ProjectData.projects].filter((projects: Project) => {
-    return projects.isCaseStudyAvailable === true;
-  }) as Project[];
-  return caseStudies;
-}
-
-export const getProjects = (priority?: Priority): Project[] => {
-  let usedPrio:Priority = Priority.Experience;
-
-  if(!priority){
-    usedPrio = Priority.Experience;
-  } else if(priority === Priority.Experience) {
-    usedPrio = Priority.Experience; 
-  } else if(priority === Priority.Personal) {
-    usedPrio = Priority.Personal;
-  }
-
-  const filterArray = ProjectData.projectMeta[usedPrio];
-  return ProjectData.projects.filter((p: Project) => filterArray.includes(p.id));
-}
-
 export interface CategoryConfig {
   key: string;
   name: string;
@@ -179,6 +134,81 @@ const FALLBACK_PALETTES: CategoryPreset[] = [
   },
 ];
 
+export interface AssetMeta {
+  id: number;
+  title: string;
+  path: string;
+  type: string;
+  width?: string | number;
+  height?: string | number;
+  project: string;
+}
+
+export interface InternalCaseStudy extends Project {
+  ref: number;
+  detailedProblemStatement: string;
+  detailedSolution: string[];
+  timeline?: string;
+  roleDetails?: string;
+  techStack: string[];
+  challenges: string[];
+}
+
+export type queryType =  "silentguard"
+
+export interface ProjectHighlight {
+  title: string;
+  url: string;
+  objective: string;
+  highlights: string[];
+}
+
+export const getSocials = (): Socials[] => {
+  return ProjectData.socials.map((social: Socials) => {
+    return {
+      platform: social.platform,
+      badge: social.badge,
+      url: social.url,
+      tagline: social.tagline,
+      signal: social.signal,
+      base: social.base,
+      details: social.details
+    }
+  })
+}
+
+export const getBlogs = (): Blogs[] => {
+  const blogs = [...ProjectData.blogs].slice(0, 3) as Blogs[];
+  return blogs;
+}
+
+export const getAllBlogs = (): Blogs[] => {
+  return [...ProjectData.blogs] as Blogs[];
+}
+
+export const getCaseStudies = (): Project[] => {
+  const caseStudies = [...ProjectData.projects].filter((projects: Project) => {
+    return projects.isCaseStudyAvailable === true;
+  }) as Project[];
+  return caseStudies;
+}
+
+export const getProjects = (priority?: Priority): Project[] => {
+  let usedPrio:Priority = Priority.Experience;
+
+  if(!priority){
+    usedPrio = Priority.Experience;
+  } else if(priority === Priority.Experience) {
+    usedPrio = Priority.Experience; 
+  } else if(priority === Priority.Personal) {
+    usedPrio = Priority.Personal;
+  }
+
+  const filterArray = ProjectData.projectMeta[usedPrio];
+  return ProjectData.projects.filter((p: Project) => filterArray.includes(p.id));
+}
+
+
 export const getCategoryConfig = (): CategoryConfig[] => {
   if (!ProjectData.skills || typeof ProjectData.skills !== "object") {
     return [];
@@ -205,16 +235,6 @@ export const getCategoryConfig = (): CategoryConfig[] => {
     };
   });
 };
-
-export interface AssetMeta {
-  id: number;
-  title: string;
-  path: string;
-  type: string;
-  width?: string | number;
-  height?: string | number;
-  project: string;
-}
 
 export const getHomePageAssets = (): AssetMeta[] => {
   if (Array.isArray(ProjectData.assets)) {
@@ -245,20 +265,6 @@ export const loadAssets = (companyName: string): AssetMeta[] => {
   return getProjectAssets(companyName);
 };
 
-export interface InternalCaseStudy extends Project {
-  ref: number;
-  detailedProblemStatement: string;
-  detailedSolution: string[];
-  timeline?: string;
-  roleDetails?: string;
-  techStack: string[];
-  challenges: string[];
-}
-
-export enum queryType {
-  silentguard = "silentguard",
-}
-
 export const getCaseStudyByProject = (query: queryType): InternalCaseStudy | null => {
   if (!query) {
     console.error("No project id provided");
@@ -287,3 +293,23 @@ export const getCaseStudyByProject = (query: queryType): InternalCaseStudy | nul
   }
   return finalInternalCaseStudy;
 };
+
+export const getHighlightProjects = (priority: Priority): ProjectHighlight[] => {
+  const personalProjectIds = ProjectData.projectMeta[priority];
+  const personalProjects: ProjectHighlight[] = [];
+
+  for (let i = 0; i < personalProjectIds.length; i++) {
+    const projectId = personalProjectIds[i];
+
+    const project = ProjectData.projects.find((project: Project) => project.id === projectId);
+    if (project) {
+      personalProjects.push({
+        title: project.title,
+        url: project.url,
+        objective: project.problemStatement,
+        highlights: project.highlights,        
+      });
+    }
+  }
+  return personalProjects;
+}
