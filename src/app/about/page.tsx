@@ -18,12 +18,12 @@ export default function AboutPage() {
         <AboutProfileCard />
 
         {/* P1: Projects and Experience, equal height */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-          <div className="min-w-0 flex flex-col lg:col-span-5">
-            <AboutPersonalProjectsCard />
-          </div>
-          <div className="min-w-0 flex flex-col lg:col-span-7">
+        <div className="grid grid-cols-1 lg:grid-cols-10 gap-6 items-stretch">
+          <div className="min-w-0 flex flex-col lg:col-span-6">
             <AboutExperienceCard />
+          </div>
+          <div className="min-w-0 flex flex-col lg:col-span-4">
+            <AboutPersonalProjectsCard />
           </div>
         </div>
 
