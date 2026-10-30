@@ -55,33 +55,6 @@ body {
     linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
 }
 
-.pattern-dots {
-  background-size: 24px 24px;
-  background-image: radial-gradient(var(--color-border) 1.5px, transparent 1.5px);
-}
-
-.pattern-cross {
-  background-size: 40px 40px;
-  background-image: 
-    radial-gradient(circle at center, var(--color-secondary) 1px, transparent 1px),
-    linear-gradient(to right, var(--color-border) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
-}
-
-.pattern-blueprint {
-  background-size: 60px 60px;
-  background-image: 
-    linear-gradient(to right, var(--color-border) 1.5px, transparent 1.5px),
-    linear-gradient(to bottom, var(--color-border) 1.5px, transparent 1.5px),
-    linear-gradient(to right, var(--color-border) 0.5px, transparent 0.5px),
-    linear-gradient(to bottom, var(--color-border) 0.5px, transparent 0.5px);
-  background-position: 0 0, 0 0, 15px 15px, 15px 15px;
-}
-
-.pattern-none {
-  background-image: none;
-}
-
 /* Glassmorphism & Custom Surfaces */
 .surface-card {
   background-color: var(--color-surface);
