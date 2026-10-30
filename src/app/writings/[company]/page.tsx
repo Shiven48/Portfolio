@@ -35,7 +35,7 @@ function renderCaseStudy(company:string){
   const companyLower = company.toLocaleLowerCase()  
   switch(companyLower){
     case ProjectType.SILENTGUARD:
-      const caseStudyData = getCaseStudyByProject(queryType.silentguard);
+      const caseStudyData = getCaseStudyByProject("silentguard");
       if(!caseStudyData) return <NoCaseStudyFound company={company} />
       return <SGCaseStudy caseStudy={caseStudyData} />
     case ProjectType.LIBRIDGE:
