@@ -27,20 +27,17 @@ const Herobody = () => {
             </div> */}
 
             {/* Main Headline with Accent Underline */}
-            <h1 className="text-3xl sm:text-3xl md:text-5xl lg:text-[2.50rem] font-bold tracking-tight text-[var(--color-primary)] leading-[1.15]">
-              I build production AI systems{" "}
-              <span className="relative inline-block whitespace-nowrap">
-                <span className="relative z-10 text-[var(--color-primary)]">
-                  on top of the edge sockets
-                </span>
-                <span className="absolute bottom-1 left-0 w-full h-[6px] bg-[var(--color-accent)]/35 -z-0 rounded-full" />
+            <h3 className="text-balance max-w-[24ch] text-[clamp(1.875rem,4vw,2.75rem)] font-bold tracking-tight leading-[1.15] text-[var(--color-primary)]">
+              I build AI-integrated MVPs and{" "}
+              <span className="px-0.5">
+                edge deployed tools from
               </span>{" "}
-              and clinical hardware.
-            </h1>
+              plain idea to working a product
+            </h3>
 
             {/* Description / Bio Text */}
             <p className="text-base sm:text-lg text-[var(--color-secondary)] font-normal max-w-xl leading-relaxed">
-              Founding AI Engineer specializing in zero-telemetry LLM security, high-throughput protocol engines, and local-first architecture.
+              Founding AI Engineer with experience in edge AI and laboratory communication protocols (HL7/ASTM) with modern full-stack infrastructure.
             </p>
 
             {/* Action Buttons (1+2 Split on smaller screens, inline flex on sm+) */}
