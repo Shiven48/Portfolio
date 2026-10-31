@@ -204,25 +204,23 @@ export function TrajectoryCoverflow() {
                   <div className="flex flex-col justify-between h-full space-y-3">
                     {/* Top Card Badge & Meta */}
                     <div className="flex items-center justify-between pb-2.5 border-b border-[var(--color-border)]">
-                      <div className="flex items-center gap-2">
-                        <span
-                          className={`w-2 h-2 rounded-full ${
-                            isActive
-                              ? "bg-[var(--color-accent)] animate-pulse"
-                              : "bg-[var(--color-secondary)]"
-                          }`}
-                        />
-                        <span className="text-xs font-mono-code font-bold uppercase tracking-wider text-[var(--color-accent)]">
-                          {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-                        </span>
-                      </div>
+                      {isPaused ? 
+                        <div className="flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-[var(--color-secondary)]" />
+                          <span className="text-xs font-mono-code font-bold uppercase tracking-wider text-[var(--color-secondary)]">
+                            {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+                          </span>
+                        </div> 
+                      :
+                        <div className="flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse"/>
+                          <span className="text-xs font-mono-code font-bold uppercase tracking-wider text-[var(--color-accent)]">
+                            {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+                          </span>
+                        </div>
+                      }
 
                       <div className="flex items-center gap-2">
-                        {item.isAccessibleByUrl && (
-                          <span className="text-[10px] font-mono-code px-2 py-0.5 rounded-full border border-emerald-500/40 text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 font-medium">
-                            LIVE
-                          </span>
-                        )}
                         <span className="text-[11px] font-mono-code text-[var(--color-secondary)]">
                           {projectData.projectMeta.ExperienceSection.includes(item.id)
                             ? "Industry"
@@ -261,7 +259,7 @@ export function TrajectoryCoverflow() {
                     {/* Problem Statement Box */}
                     <div className="p-3 rounded-lg bg-amber-500/10 border-l-2 border-l-amber-500 border-y border-r border-amber-500/20 text-xs font-mono-code leading-relaxed">
                       <span className="font-semibold text-amber-500 tracking-wider uppercase text-[10px] block mb-1">
-                        PROBLEM
+                        PROBLEM STATEMENT
                       </span>
                       <p className="text-xs leading-relaxed">
                         {item.problemStatement}
@@ -351,14 +349,6 @@ export function TrajectoryCoverflow() {
             </button>
           </div>
 
-          {/* Status caption */}
-          <div className="flex justify-between items-center text-[10px] font-mono-code text-[var(--color-secondary)] mt-2 px-1">
-            <span>{isPaused ? "PAUSED (HOVER/TOUCH)" : "AUTOPLAY · 5.0s"}</span>
-            <span>
-              {activeIndex + 1} / {filteredProjects.length}
-            </span>
-          </div>
-
           {/* Auto rotate note for the cards */}
           <Note
             title="Note"
@@ -429,11 +419,6 @@ export function TrajectoryCoverflow() {
                         </div>
 
                         <div className="flex items-center gap-2">
-                          {item.isAccessibleByUrl && (
-                            <span className="text-[10px] font-mono-code px-2 py-0.5 rounded-full border border-emerald-500/40 text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 font-medium">
-                              LIVE
-                            </span>
-                          )}
                           <span className="text-[11px] font-mono-code text-[var(--color-secondary)]">
                             {projectData.projectMeta.ExperienceSection.includes(item.id)
                               ? "Industry"
@@ -470,8 +455,8 @@ export function TrajectoryCoverflow() {
                       </div>
 
                       {/* Problem Statement Box */}
-                      <div className="rounded-xl p-2.5 sm:p-3 bg-[var(--color-background)] border border-[var(--color-border)] text-xs font-mono-code space-y-1">
-                        <span className="text-[10px] uppercase font-bold text-[var(--color-secondary)] tracking-wider block">
+                      <div className="p-3 rounded-lg bg-amber-500/10 border-l-2 border-l-amber-500 border-y border-r border-amber-500/20 text-xs font-mono-code leading-relaxed">
+                        <span className="font-semibold text-amber-500 tracking-wider uppercase text-[10px] block mb-1">
                           PROBLEM STATEMENT
                         </span>
                         <p className="text-[var(--color-primary)] font-small">
