@@ -2,10 +2,10 @@
 
 import React from "react";
 import { Link2Icon } from "lucide-react";
-import { Blogs, getBlogs } from "@/lib/utils";
+import { Writing, getBlogs } from "@/lib/utils";
 
 export function AboutSidebarCards() {
-  const blogs:Blogs[] = getBlogs();
+  const blogs:Writing[] = getBlogs();
   const sidebarData = [... blogs];
 
   return (
@@ -22,7 +22,7 @@ export function AboutSidebarCards() {
         </div>
 
         <div className="space-y-3">
-          {sidebarData.map((data:Blogs) => {
+          {sidebarData.map((data:Writing) => {
             return (
             <a
               key={data.title}
