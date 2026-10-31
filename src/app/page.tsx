@@ -3,15 +3,18 @@ import Herobody from "./(Header)/Herobody";
 import { TrajectoryCoverflow } from "@/components/TrajectoryCoverflow";
 import { BlogsSection } from "@/components/BlogsSection";
 import { ContactSection } from "@/components/ContactSection";
-import projectData from "@/../data/data.json";
 import { StatsBanner } from "@/components/StatsBanner";
+import { getSelectedWritings } from "@/lib/utils";
 
 function SectionSeperator() {
   return (
     <div className="w-[90%] h-[1px] bg-[color-mix(in_srgb,var(--color-secondary)_60%,transparent)] mx-auto"/>
   );
 }
+
 export default function Home() {
+  const writings = getSelectedWritings()
+
   return (
     <main className="min-h-screen flex flex-col justify-between selection:bg-[var(--color-accent)] selection:text-white">
       {/* Top Navbar */}
@@ -26,8 +29,8 @@ export default function Home() {
       <SectionSeperator />
 
       {/* Selected Writings / Blogs (Task 5: In place of selected work) */}
-      {projectData.blogs && projectData.blogs?.length > 0 && (
-        <BlogsSection />
+      {writings && writings.length > 0 && (
+        <BlogsSection writings={writings} />
       )}
       <SectionSeperator />
 
