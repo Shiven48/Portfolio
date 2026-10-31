@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export const endpoint:string = process.env.NEXT_PUBLIC_API_ENDPOINT || "";
+export const endpoint:string = "https://formspree.io/f/xnppbwwq"
 
 export const Component_Color_Mapping:ComponentsAndColor = {
   Navbar: "bg-[#4bc5ce]",
@@ -16,6 +16,8 @@ export const Component_Color_Mapping:ComponentsAndColor = {
   Project: "bg-pink-500",
 } as const;
 
+export type SocialPlatforms = "GITHUB" | "LINKEDIN"
+
 export interface Socials {
   platform: string;
   badge: string;
@@ -23,22 +25,20 @@ export interface Socials {
   tagline: string;
   signal: string;
   base: string;
-  details: {
-    profile: string;
-    status: string;
-  };
+  status: string;
 }
 
-export interface Blogs {
+type writingType = "blog" | "casestudy"
+
+export interface Writing {
   title: string;
   description: string;
   date: string;
   readTime: string;
   tag: string;
   url: string;
+  type: string;
 }
-
-export type CaseStudies = Blogs;
 
 export interface Project {
   id: number;
@@ -172,18 +172,18 @@ export const getSocials = (): Socials[] => {
       tagline: social.tagline,
       signal: social.signal,
       base: social.base,
-      details: social.details
+      status: social.status
     }
   })
 }
 
-export const getBlogs = (): Blogs[] => {
-  const blogs = [...ProjectData.blogs].slice(0, 3) as Blogs[];
+export const getBlogs = (): Writing[] => {
+  const blogs = [...ProjectData.writings].filter((w: Writing) => w.type === "blog").slice(0, 3) as Writing[];
   return blogs;
 }
 
-export const getAllBlogs = (): Blogs[] => {
-  return [...ProjectData.blogs] as Blogs[];
+export const getAllBlogs = (): Writing[] => {
+  return [...ProjectData.writings].filter((w: Writing) => w.type === "blog") as Writing[];
 }
 
 export const getCaseStudies = (): Project[] => {
@@ -265,34 +265,34 @@ export const loadAssets = (companyName: string): AssetMeta[] => {
   return getProjectAssets(companyName);
 };
 
-export const getCaseStudyByProject = (query: queryType): InternalCaseStudy | null => {
-  if (!query) {
-    console.error("No project id provided");
-    return null;
-  }
+// export const getCaseStudyByProject = (query: queryType): InternalCaseStudy | null => {
+//   if (!query) {
+//     console.error("No project id provided");
+//     return null;
+//   }
 
-  const normalized = query.toLowerCase().trim();
-  const projectFound: Project | undefined = ProjectData.projects.find(
-    (project: Project) =>
-      project.title.toLowerCase() === normalized ||
-      (project.caseStudyUrl && project.caseStudyUrl.toLowerCase().endsWith(`/${normalized}`)) ||
-      (project.caseStudyUrl && project.caseStudyUrl.toLowerCase() === `/experience/${normalized}`)
-  );
-  if (!projectFound) {
-    console.error("No project found with title: ", query);
-    return null;
-  }
-  const internalCaseStudy = ProjectData.internalCaseStudy[query];
-  if (!internalCaseStudy) {
-    console.error("No ref found for project: ", query);
-    return null;
-  }
-  const finalInternalCaseStudy: InternalCaseStudy = {
-    ...projectFound,
-    ...internalCaseStudy
-  }
-  return finalInternalCaseStudy;
-};
+//   const normalized = query.toLowerCase().trim();
+//   const projectFound: Project | undefined = ProjectData.projects.find(
+//     (project: Project) =>
+//       project.title.toLowerCase() === normalized ||
+//       (project.caseStudyUrl && project.caseStudyUrl.toLowerCase().endsWith(`/${normalized}`)) ||
+//       (project.caseStudyUrl && project.caseStudyUrl.toLowerCase() === `/experience/${normalized}`)
+//   );
+//   if (!projectFound) {
+//     console.error("No project found with title: ", query);
+//     return null;
+//   }
+//   const internalCaseStudy = ProjectData.internalCaseStudy[query];
+//   if (!internalCaseStudy) {
+//     console.error("No ref found for project: ", query);
+//     return null;
+//   }
+//   const finalInternalCaseStudy: InternalCaseStudy = {
+//     ...projectFound,
+//     ...internalCaseStudy
+//   }
+//   return finalInternalCaseStudy;
+// };
 
 export const getHighlightProjects = (priority: Priority): ProjectHighlight[] => {
   const personalProjectIds = ProjectData.projectMeta[priority];
@@ -313,3 +313,15 @@ export const getHighlightProjects = (priority: Priority): ProjectHighlight[] => 
   }
   return personalProjects;
 }
+
+export const getLocation = () => {
+  return ProjectData.Academic.location;
+}
+
+export const getSelectedWritings = (): Writing[] => {
+  const writings: Writing[] = ProjectData.writings ?? [];
+  const blogs = writings.filter(w => w.type === "blog");
+  const caseStudies = writings.filter(w => w.type === "casestudy");
+
+  return [...blogs, ...caseStudies].slice(0, 3);
+};
