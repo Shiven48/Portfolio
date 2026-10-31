@@ -32,7 +32,7 @@ const Herobody = () => {
               <span className="px-0.5">
                 edge deployed tools from
               </span>{" "}
-              plain idea to working a product
+              plain idea to a working product
             </h3>
 
             {/* Description / Bio Text */}
