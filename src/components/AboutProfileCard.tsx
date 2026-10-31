@@ -2,7 +2,7 @@
 
 import React from "react";
 import projectData from "@/../data/data.json";
-import { MapPin, Mail, Globe, Linkedin, Github, ExternalLink } from "lucide-react";
+import { MapPin, Mail, Linkedin, Github, ExternalLink } from "lucide-react";
 
 export function AboutProfileCard() {
   const linkedinSocial = projectData.socials.find(
@@ -33,7 +33,7 @@ export function AboutProfileCard() {
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-0.5 text-xs text-[var(--color-secondary)] font-mono-code">
             <div className="flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5 text-[var(--color-secondary)] shrink-0" />
-              <span>{projectData.Academic?.location || "Mumbai, India"}</span>
+              <span>{projectData.Academic.location}</span>
             </div>
 
             <a
@@ -48,15 +48,15 @@ export function AboutProfileCard() {
 
         {/* Right: Social Action CTA Buttons */}
         <div className="flex items-center gap-2.5 shrink-0 self-start">
-          {linkedinSocial && (
+           {linkedinSocial && (
             <a
               href={linkedinSocial.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono-code font-medium border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-primary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all shadow-xs"
+              className="col-span-1 inline-flex items-center justify-center gap-2 px-3 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-full text-xs sm:text-sm font-semibold btn-outline-custom shadow-xs sm:shadow-sm active:scale-[0.98] transition-all min-h-[44px] sm:min-h-0"
             >
-              <Linkedin className="w-3.5 h-3.5" />
-              <span>LinkedIn</span>
+              <Linkedin className="w-4 h-4 text-[var(--color-secondary)] shrink-0" />
+              <span className="truncate">LinkedIn</span>
               <ExternalLink className="w-2.5 h-2.5 opacity-60 ml-0.5" />
             </a>
           )}
@@ -66,10 +66,10 @@ export function AboutProfileCard() {
               href={githubSocial.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono-code font-medium border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-primary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all shadow-xs"
+              className="col-span-1 inline-flex items-center justify-center gap-2 px-3 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-full text-xs sm:text-sm font-semibold btn-outline-custom shadow-xs sm:shadow-sm active:scale-[0.98] transition-all min-h-[44px] sm:min-h-0"
             >
-              <Github className="w-3.5 h-3.5" />
-              <span>GitHub</span>
+              <Github className="w-4 h-4 text-[var(--color-secondary)] shrink-0" />
+              <span className="truncate">GitHub</span>
               <ExternalLink className="w-2.5 h-2.5 opacity-60 ml-0.5" />
             </a>
           )}
