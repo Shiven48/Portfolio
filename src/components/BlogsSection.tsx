@@ -2,21 +2,15 @@
 
 import React from "react";
 import { ArrowUpRight, Clock, Calendar } from "lucide-react";
-import { getBlogs } from "@/lib/utils";
+import { getBlogs, Writing } from "@/lib/utils";
 
-interface BlogEntry {
-  title?: string;
-  description?: string;
-  date?: string;
-  readTime?: string;
-  tag?: string;
-  url?: string;
-}
-
-export function BlogsSection() {
-  const validBlogs: BlogEntry[] = getBlogs();
-  const displayedPosts = validBlogs.length > 0 ? validBlogs : [];
-  const isDraftState = validBlogs.length === 0;
+export function BlogsSection({
+  writings
+}: {
+  writings: Writing[];
+}) {
+  const displayedPosts = writings.length > 0 ? writings : [];
+  const isDraftState = writings.length === 0;
 
   return (
     <section id="blogs" className="w-full py-16 md:py-20 transition-colors">
@@ -80,7 +74,7 @@ export function BlogsSection() {
                 </div>
 
                 {/* Post Title */}
-                <h3 className="text-lg font-bold tracking-tight text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors leading-snug">
+                <h3 className="text-lg font-bold tracking-tight text-[var(--color-primary)] transition-colors leading-snug">
                   {post.title}
                 </h3>
 
@@ -92,8 +86,8 @@ export function BlogsSection() {
 
               {/* Bottom Card Action */}
               <div className="pt-3 border-t border-[var(--color-border)] flex items-center justify-between text-xs font-mono-code">
-                <span className="text-[var(--color-secondary)]">
-                  {isDraftState ? "In production" : "Read post"}
+                <span className="text-[var(--color-secondary)] uppercase">
+                  {post.type}
                 </span>
                 <a
                   href={post.url || "#blogs"}
