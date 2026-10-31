@@ -7,8 +7,8 @@ import { Send, CheckCircle2 } from "lucide-react";
 
 export default function FormspreeCard() {
   const formKey = endpoint.includes("/")
-    ? endpoint.split("/").filter(Boolean).pop() || "mqpakbzd"
-    : endpoint || "mqpakbzd";
+    ? endpoint.split("/").filter(Boolean).pop() || "xnppbwwq"
+    : endpoint || "xnppbwwq";
 
   const [state, handleSubmit, reset] = useForm(formKey);
 
