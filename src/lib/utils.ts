@@ -325,3 +325,7 @@ export const getSelectedWritings = (): Writing[] => {
 
   return [...blogs, ...caseStudies].slice(0, 3);
 };
+
+export const getCaseStudyByProject = (query: queryType): null => {
+  return null
+}
