@@ -11,11 +11,11 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import { Blogs, getAllBlogs, getCaseStudies, Project } from "@/lib/utils";
+import { Writing, getAllBlogs, getCaseStudies, Project } from "@/lib/utils";
 
 export default function WritingsPage() {
   const caseStudies: Project[] = getCaseStudies();
-  const allBlogs: Blogs[] = getAllBlogs();
+  const allBlogs: Writing[] = getAllBlogs();
   const isBlogsPresent = allBlogs && allBlogs.length > 0 ? true : false;
 
   // Stacked deck state for mobile / small screens (< sm)
